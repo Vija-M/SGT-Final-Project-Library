@@ -28,6 +28,22 @@ CREATE TABLE Authors (
 	authorInfo TEXT
 );
 
+-- Users definition
+
+CREATE TABLE Users (
+	userID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	userFirstName TEXT NOT NULL,
+	userLastName TEXT NOT NULL,
+	email VARCHAR,
+	phone VARCHAR(10),
+	birthDate DATE,
+	address VARCHAR(70),
+	city TEXT(20) DEFAULT Riga,
+	Country TEXT(20) DEFAULT Latvia,
+	postalCode NVARCHAR(10),
+	history TEXT(200) DEFAULT Good
+);
+
 
 INSERT INTO Books (id, title, isbn, authorID, yearPublished, "language", pages, genre, publisher, edition, hasHardCover, clientID, orderID)
 VALUES  (1, 'The Great Gatsby', '9780743273565', 1, 2004, 'English', 180, 'Classic Literature & Fiction', 'Scribner Book Company', 'first', 1, NULL, NULL),
