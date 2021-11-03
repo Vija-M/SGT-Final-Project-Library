@@ -3,14 +3,14 @@
 CREATE TABLE Books (
 	id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	title TEXT NOT NULL,
-	isbn TEXT,
+	isbn VARCHAR(13),
 	authorID INTEGER NOT NULL,
-	yearPublished INTEGER,
+	yearPublished VARCHAR(4),
 	"language" TEXT DEFAULT English,
 	pages INTEGER NOT NULL,
 	genre TEXT,
 	publisher TEXT,
-	edition TEXT,
+	edition VARCHAR(20),
 	hasHardCover NUMERIC DEFAULT 0,
 	information TEXT,
 	clientID INTEGER,
@@ -41,7 +41,7 @@ CREATE TABLE Users (
 	city TEXT(20) DEFAULT Riga,
 	Country TEXT(20) DEFAULT Latvia,
 	postalCode NVARCHAR(10),
-	history TEXT(200) DEFAULT Good
+	userHistory TEXT(200) DEFAULT Good
 );
 
 
@@ -59,5 +59,5 @@ VALUES  (1, 'F. Scott Fitzgerald ', '1896-09-24', '1940-12-21.', 'F. Scott Fitzg
 
 
 INSERT INTO Users
-(userID, userFirstName,	userLastName,	email,	phone,	birthDate,	address, postalCode,)
-VALUES  (1, 'Anna', 'Smith', 1, 2004, 'English', 180, 'Classic Literature & Fiction',
+(userID, userFirstName,	userLastName,	email,	phone,	birthDate,	address, postalCode)
+VALUES  (1, 'Anna', 'Smith', 'smith@library.com', '1234567', '1978-09-25',  'London str.2-5', 'AA-1234')
