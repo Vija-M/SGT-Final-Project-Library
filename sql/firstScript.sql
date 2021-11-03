@@ -33,6 +33,10 @@ VALUES(1, 'The Great Gatsby', '9780743273565', 1, 2004, 'English', 180, 'Classic
 INSERT INTO Books
 (id, title, isbn, authorID, yearPublished, "language", pages, genre, publisher, edition, hasHardCover, clientID, orderID)
 VALUES(2, 'This Side of Paradise', '9781593082437', 1, 2005, 'English', 320, 'Classic Literature & Fiction', 'Barnes & Noble', 'third', 0, NULL, NULL);
+INSERT INTO Books
+(id, title, isbn, authorID, yearPublished, "language", pages, genre, publisher, edition, hasHardCover, clientID, orderID)
+VALUES(3, '
+Zemes dziesma', '9984000389', 2, 1994, 'Latvian', 179, 'Latviešu esejas', 'Preses nams', 'first', 0, NULL, NULL);
 
 INSERT INTO Authors
 (authorID, authorName, dateOfBirth, dateOfDeath, authorInfo)
