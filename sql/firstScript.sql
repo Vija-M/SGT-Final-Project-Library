@@ -51,7 +51,11 @@ VALUES  (1, 'The Great Gatsby', '9780743273565', 1, 2004, 180, 'Classic Literatu
 
 
 INSERT INTO Books (title, isbn, authorID, yearPublished, "language", pages, genre, publisher, edition, hasHardCover, information, clientID, orderID)
-VALUES('Zemes dziesma', '9984000389', 2, 1994, 'Latvian', 179, 'Latviešu esejas', 'Preses nams', 'first', 0, '[mākslinieks Vilnis Didrihsons un tehniskā redaktore Olga Lovnika]', NULL, NULL);
+VALUES  ('Zemes dziesma', '9984000389', 2, 1994, 'Latvian', 179, 'Latviešu esejas', 'Preses nams', 'first', 0, '[mākslinieks Vilnis Didrihsons un tehniskā redaktore Olga Lovnika]', NULL, NULL),
+        ('Baltais ceļš', '99984043045', 2, 1997, 'Latvian', 164, 'Latviešu literatūras pētniecība', 'Zvaigzne ABC', 'first', 0, 'studija par Annu Brigaderi', NULL, NULL),
+        ('Dzejnieka uzdevums mūsdienās', '9984048829', 2, 1997, 'Latvian', 117, 'Esejas', 'Zvaigzne ABC', 'first', 1, 'Dzejnieki un akrobāti, kas manipulē ar vārdiem ; Dzīvesgudrie sirdsapziņas un ticības dziesminieki [no vācu valodas tulkojusi Rasma Vīlipa ; redaktore B. Cimermane ; pēcvārda autore Ingrīda Sokolova]', NULL, NULL);
+
+
 
 
 INSERT INTO Authors
@@ -61,7 +65,7 @@ VALUES  (1, 'F. Scott Fitzgerald ', '1896-09-24', '1940-12-21.', 'F. Scott Fitzg
 
 
 INSERT INTO Users
-(userID, userFirstName,	userLastName, email,	phone,	birthDate,	address, postalCode)
+(userID, userFirstName,	userLastName, email, phone,	birthDate,	address, postalCode)
 VALUES  (1, 'Anna', 'Smith', 'smith@library.com', '1234567', '1978-09-25',  'London str.2-5', 'AA-1234'),
         (2, 'Anna', 'Green', 'green@library.com', '1334567', '1987-09-24',  'Ligo str.2-5', 'AA-2234'),
         (3, 'Peter', 'Green', 'greenp@library.com', '1434567', '1948-12-24',  'Ligo str.2-5', 'AA-2234'),
@@ -69,7 +73,7 @@ VALUES  (1, 'Anna', 'Smith', 'smith@library.com', '1234567', '1978-09-25',  'Lon
         (5, 'Alice', 'Doe', 'alice@minister.com', '1734567', '2002-11-27',  'Leather str.2-5', 'AA-2434');
 
 INSERT INTO Users
-(userFirstName,	userLastName, email,	phone,	birthDate,	address, city, postalCode, userHistory)
+(userFirstName,	userLastName, email, phone,	birthDate,	address, city, postalCode, userHistory)
 VALUES  ('Alex', 'Smith', 'smith@library.com', '1234567', '1978-09-25',  'France str.2-5', 'Paris', 'AA-1234', 'very emotional'),
         ('Cris', 'Frog', 'frog@frog.com', '1334567', '1987-09-24',  'Ligo str.2-5', 'Antananarivo', 'AA-2234', 'always late'),
         ('Catrin', 'Green', 'catrin@gov.com', '1434567', '1948-12-24',  'Ligo str.2-5', 'Stockholm', 'AA-2234', 'a lot of strange jokes'),
