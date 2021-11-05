@@ -25,10 +25,10 @@ public class Users {
         this.phone = phone;
         this.birthDate = birthDate;
         this.address = address;
-        this.city = "Riga";
-        this.country = "Latvia";
+        this.setCity(city);
+        this.setCountry(country);
         this.postalCode = postalCode;
-        this.userHistory = "Good";
+        this.setUserHistory(userHistory);
     }
 
     public int getUserID() {
@@ -87,7 +87,6 @@ public class Users {
         return address;
     }
 
-
     public void setAddress(String address) {
         if (address.length() > 70) {
             System.out.println("Address is too long, please try once again!");
@@ -104,6 +103,8 @@ public class Users {
         if (city.length() > 20) {
             System.out.println("Name of the city is too long, please try once again!");
             return;
+        } else if (city.isEmpty()) {
+            this.city = "Riga";
         }
         this.city = city;
     }
@@ -116,6 +117,8 @@ public class Users {
         if (country.length() > 20) {
             System.out.println("Name of the country is too long, please try once again!");
             return;
+        } else if (country.isEmpty()) {
+            this.country = "Latvia";
         }
         this.country = country;
     }
@@ -140,6 +143,8 @@ public class Users {
         if (country.length() > 200) {
             System.out.println("User history is too long, please try once again! Limit is 200 characters.");
             return;
+        } else if (userHistory.isEmpty()) {
+            this.userHistory = "Latvia";
         }
         this.userHistory = userHistory;
     }
