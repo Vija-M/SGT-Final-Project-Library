@@ -39,7 +39,7 @@ CREATE TABLE Users (
 	birthDate DATE,
 	address VARCHAR(70),
 	city TEXT(20) DEFAULT Riga,
-	Country TEXT(20) DEFAULT Latvia,
+	country TEXT(20) DEFAULT Latvia,
 	postalCode NVARCHAR(10),
 	userHistory TEXT(200) DEFAULT Good
 );
