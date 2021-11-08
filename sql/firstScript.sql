@@ -71,11 +71,7 @@ CREATE TABLE Orders (
 	information VARCHAR(200)
 );
 
-INSERT INTO Orders (bookID, userID, issueDate, returnDate)
-VALUES  (1, 1, '2021-11-01', '2021-12-01'),
-        (2, 1, '2021-11-01', '2021-12-01'),
-        (3, 6, '2021-11-10', '2021-12-10'),
-        (4, 7, '2021-11-15', '2021-12-15');
+
 
 INSERT INTO Books (id, title, isbn, authorID, yearPublished, pages, genre, publisher, edition, hasHardCover, clientID, orderID)
 VALUES  (1, 'The Great Gatsby', '9780743273565', 1, 2004, 180, 'Classic Literature & Fiction', 'Scribner Book Company', 'first', 1, NULL, NULL),
@@ -136,4 +132,11 @@ VALUES  (6, 1),
         (8, 1),
         (9, 1),
         (5, 1);
+
+
+INSERT INTO Orders (bookID, userID, issueDate, returnDate)
+VALUES  (1, 1, '2021-11-01', '2021-12-01'),
+        (2, 1, '2021-11-01', '2021-12-01'),
+        (3, 6, '2021-11-10', '2021-12-10'),
+        (4, 7, '2021-11-15', '2021-12-15');
 
