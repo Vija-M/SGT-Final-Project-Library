@@ -58,7 +58,6 @@ CREATE TABLE UserAccess (
 	userAccessID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	userID INTEGER NOT NULL,
 	roleID INTEGER NOT NULL,
-    isLibrarian NUMERIC DEFAULT 0
 );
 
 
@@ -106,12 +105,12 @@ VALUES  (1, 'client', 0),
         (4, 'director', 1);
 
 INSERT INTO UserAccess
-(userAccessID, userID, roleID, isLibrarian)
-VALUES  (1, 1, 2, 1),
-        (2, 1, 1, 0),
-        (3, 2, 3, 1),
-        (4, 3, 4, 1),
-        (5, 3, 1, 0);
+(userAccessID, userID, roleID)
+VALUES  (1, 1, 2),
+        (2, 1, 1),
+        (3, 2, 3),
+        (4, 3, 4),
+        (5, 3, 1);
 
 INSERT INTO UserAccess
 (userID, roleID)
