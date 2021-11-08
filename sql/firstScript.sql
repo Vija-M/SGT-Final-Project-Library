@@ -40,7 +40,7 @@ CREATE TABLE Users (
 	address VARCHAR(70),
 	city TEXT(20) DEFAULT Riga,
 	country TEXT(20) DEFAULT Latvia,
-	postalCode NVARCHAR(10),
+	postalCode VARCHAR(10),
 	userHistory TEXT(200) DEFAULT Good
 );
 
@@ -58,6 +58,17 @@ CREATE TABLE UserAccess (
 	userAccessID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	userID INTEGER NOT NULL,
 	roleID INTEGER NOT NULL,
+);
+
+-- Orders definition
+
+CREATE TABLE Orders (
+	orderID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	bookID INTEGER NOT NULL,
+	userID INTEGER NOT NULL,
+	issueDate DATE NOT NULL,
+	returnDate DATE NOT NULL,
+	information VARCHAR(200)
 );
 
 
