@@ -13,7 +13,7 @@ CREATE TABLE Books (
 	edition VARCHAR(20),
 	hasHardCover NUMERIC DEFAULT 0,
 	information TEXT,
-	clientID INTEGER,
+	userID INTEGER,
 	orderID INTEGER
 );
 
