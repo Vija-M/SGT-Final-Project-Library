@@ -2,19 +2,19 @@ package objects;
 
 public class Books {
     private int id;
-    private String title;           // TEXT NOT NULL,
-    private String isbn;            // VARCHAR(13),
-    private int authorID;           //  INTEGER NOT NULL,
-    private int yearPublished;      // VARCHAR(4),
-    private String language;        // TEXT DEFAULT English,
-    private int pages;              // INTEGER NOT NULL,
-    private String genre;           // TEXT,
-    private String publisher;       // TEXT,
-    private String edition;         // VARCHAR(20),
-    private boolean hasHardCover;   // NUMERIC DEFAULT 0,
-    private String information;     // TEXT,
-    private int clientID;            // INTEGER,
-    private int orderID;             // INTEGER
+    private String title;
+    private String isbn;
+    private int authorID;
+    private int yearPublished;
+    private String language;
+    private int pages;
+    private String genre;
+    private String publisher;
+    private String edition;
+    private boolean hasHardCover;
+    private String information;
+    private int clientID;
+    private int orderID;
 
     public Books(String title, String isbn, int authorID, int yearPublished, String language, int pages, String genre, String publisher, String edition, boolean hasHardCover, String information, int clientID, int orderID) {
         this.title = title;
