@@ -44,6 +44,24 @@ CREATE TABLE Users (
 	userHistory TEXT(200) DEFAULT Good
 );
 
+-- Roles and access definition
+
+CREATE TABLE RolesAndAccess (
+	roleID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	role TEXT NOT NULL,
+    isLibrarian NUMERIC DEFAULT 0
+);
+
+-- User access definition
+
+CREATE TABLE UserAccess (
+	userAccessID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	userID INTEGER NOT NULL,
+	roleID INTEGER NOT NULL,
+    isLibrarian NUMERIC DEFAULT 0
+);
+
+
 
 INSERT INTO Books (id, title, isbn, authorID, yearPublished, pages, genre, publisher, edition, hasHardCover, clientID, orderID)
 VALUES  (1, 'The Great Gatsby', '9780743273565', 1, 2004, 180, 'Classic Literature & Fiction', 'Scribner Book Company', 'first', 1, NULL, NULL),
@@ -79,3 +97,27 @@ VALUES  ('Alex', 'Smith', 'smith@library.com', '1234567', '1978-09-25',  'France
         ('Catrin', 'Green', 'catrin@gov.com', '1434567', '1948-12-24',  'Ligo str.2-5', 'Stockholm', 'AA-2234', 'a lot of strange jokes'),
         ('John', 'Cron', 'john.cron@shop.com', '1534567', '2001-09-18',  'History str.2-5','Panama', 'AA-2334', 'RED LIST'),
         ('Marta', 'Liepa', 'liepa@minister.com', '1734567', '2002-11-27',  'Leather str.2-5', 'Ventspils', 'AA-2434', 'VIP');
+
+INSERT INTO RolesAndAccess
+(roleID, role, isLibrarian)
+VALUES  (1, 'client', 0),
+        (2, 'manager', 1),
+        (3, 'client administrator', 1),
+        (4, 'director', 1);
+
+INSERT INTO UserAccess
+(userAccessID, userID, roleID, isLibrarian)
+VALUES  (1, 1, 2, 1),
+        (2, 1, 1, 0),
+        (3, 2, 3, 1),
+        (4, 3, 4, 1),
+        (5, 3, 1, 0);
+
+INSERT INTO UserAccess
+(userID, roleID)
+VALUES  (6, 1),
+        (7, 1),
+        (8, 1),
+        (9, 1),
+        (5, 1);
+
