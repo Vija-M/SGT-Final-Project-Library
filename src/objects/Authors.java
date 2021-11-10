@@ -5,14 +5,14 @@ import java.util.StringJoiner;
 
 public class Authors {
     private int authorID;
-    private String userName;
+    private String authorName;
     private Date dateOfBirth;
     private Date dateOfDeath;
     private String authorInfo;
 
     public Authors(int authorID, String userName, Date dateOfBirth, Date dateOfDeath, String authorInfo) {
         this.authorID = authorID;
-        this.userName = userName;
+        this.authorName = userName;
         this.dateOfBirth = dateOfBirth;
         this.dateOfDeath = dateOfDeath;
         this.authorInfo = authorInfo;
@@ -20,7 +20,7 @@ public class Authors {
 
     public Authors(int authorID, String userName, Date dateOfBirth) {
         this.authorID = authorID;
-        this.userName = userName;
+        this.authorName = userName;
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -33,11 +33,11 @@ public class Authors {
     }
 
     public String getUserName() {
-        return userName;
+        return authorName;
     }
 
     public void setUserName(String userName) {
-        this.userName = userName;
+        this.authorName = userName;
     }
 
     public Date getDateOfBirth() {
@@ -68,7 +68,7 @@ public class Authors {
     public String toString() {
         return new StringJoiner(", ", Authors.class.getSimpleName() + "[", "]")
                 .add("authorID=" + authorID)
-                .add("userName='" + userName + "'")
+                .add("userName='" + authorName + "'")
                 .add("dateOfBirth=" + dateOfBirth)
                 .add("dateOfDeath=" + dateOfDeath)
                 .add("authorInfo='" + authorInfo + "'")
