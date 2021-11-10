@@ -33,6 +33,7 @@ public class AuthorController {
                     "INSERT INTO Authors (authorName, dateOfBirth, dateOfDeath, authorInfo) " +
                             "VALUES( '" + authorName + "', '" + dateOfBirth + "' , '" + dateOfDeath + "' , '" + authorInfo + "');");
             statement.close();
+            connection.close();
             System.out.println("Successfully added new author " + authorName);
 
             return true;
