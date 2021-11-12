@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ccca81e-e042-4927-a58c-1e7d2c11c038" name="Default Changelist" comment="Creation" />
+    <list default="true" id="8ccca81e-e042-4927-a58c-1e7d2c11c038" name="Default Changelist" comment="Creation">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SGT-Final-Project-Library.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SGT-Final-Project-Library.iml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
