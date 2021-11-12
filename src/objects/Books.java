@@ -1,5 +1,7 @@
 package objects;
 
+import java.util.StringJoiner;
+
 public class Books {
     private int id;
     private String title;
@@ -185,5 +187,24 @@ public class Books {
 
     public void setOrderID(int orderID) { ////TODO: add validation later when ORDERS are completed - if book is in order this.orderID = orderID from order + think of default value if book is not ordered//
         this.orderID = orderID;
+    }
+
+    @Override
+    public String toString() {
+        return new StringJoiner(", ", Books.class.getSimpleName() + "[", "]")
+                .add("title=" + title)
+                .add("ISBN='" + isbn + "'")
+                .add("authorID='" + authorID + "'")
+                .add("yearPublished='" + yearPublished + "'")
+                .add("language='" + language + "'")
+                .add("pages=" + pages)
+                .add("genre='" + genre + "'")
+                .add("publisher='" + publisher + "'")
+                .add("edition='" + edition + "'")
+                .add("hasHardCover='" + hasHardCover + "'")
+                .add("information='" + information + "'")
+                .add("clientID='" + clientID + "'")
+                .add("orderID='" + orderID + "'")
+                .toString();
     }
 }
