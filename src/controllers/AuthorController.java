@@ -8,13 +8,13 @@ public class AuthorController {
     private static Scanner scanner = new Scanner(System.in);
 
     public static boolean addNewAuthor() {
-        System.out.println("Enter the name of the author: ");
+        System.out.print("Enter the name of the author: ");
         String authorName = scanner.nextLine();
 
-        System.out.println("Enter author's date of birth (dd/MM/yyyy): ");
+        System.out.print("Enter author's date of birth (dd/MM/yyyy): ");
         String dateOfBirth = scanner.nextLine();
 
-        System.out.println("Enter author's date of death (dd/MM/yyyy, optional): ");
+        System.out.print("Enter author's date of death (dd/MM/yyyy, optional): ");
         String dateOfDeath = scanner.nextLine();
 
         System.out.print("Enter any additional information about author (optional): ");
