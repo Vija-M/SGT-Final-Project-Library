@@ -84,7 +84,12 @@ public class Books {
             this.authorID = authorID;
         } else {
             System.out.println("Author is not in the database. ");
-            AuthorController.addNewAuthor();
+            int newAuthorID = AuthorController.addNewAuthor();
+            if (newAuthorID != -1){
+                this.authorID = newAuthorID;
+            } else {
+                System.out.println("Could not add new author, please try again! ");
+            }
         }
     }
 
