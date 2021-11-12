@@ -1,5 +1,7 @@
 package objects;
 
+import controllers.AuthorController;
+
 import java.util.StringJoiner;
 
 public class Books {
@@ -81,7 +83,8 @@ public class Books {
         if (authorID == getAuthorID()) {
             this.authorID = authorID;
         } else {
-            System.out.println("Author is not in the database. ");      //TODO: When method createAuthor is written, add a call to it here//
+            System.out.println("Author is not in the database. ");
+            AuthorController.addNewAuthor();
         }
     }
 
