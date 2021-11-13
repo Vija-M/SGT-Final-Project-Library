@@ -33,10 +33,10 @@ public class UserController {
             Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/37126/SQLITE3/Library.db");
             Statement statement = connection.createStatement();
 
-            //TODO
             statement.execute(
-                    "INSERT INTO Users (userFirstName, userLastName, email, phone) " +
-                            "VALUES( '" + userFirstName + "', '" + userLastName + "' , '" + email + "' , '" + phone + "');");
+                    "INSERT INTO Users (userFirstName, userLastName, email, phone, birthDate, address, city, country, postalCode, userHistory) " +
+                            "VALUES( '" + userFirstName + "', '" + userLastName + "' , '" + email + "' , '" + phone + "' , '" + birthDate + "' , '" + addNewUser() +
+                            "' , '" + city + "' , '" + country + "' , '" + postalCode + "' , '" + userHistory + "');");
 
             String queryLastRowInserted = "SELECT last_insert_rowid() AS userID;";
             statement.execute(queryLastRowInserted);

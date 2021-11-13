@@ -36,7 +36,7 @@ public class AuthorController {
 
             statement.close();
             connection.close();
-            System.out.println("Successfully added new author " + authorName);
+            System.out.println("Successfully added new author " + authorName + "with ID:" + generatedID);
             return generatedID;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
