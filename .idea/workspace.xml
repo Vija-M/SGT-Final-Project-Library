@@ -318,7 +318,14 @@
       <option name="project" value="LOCAL" />
       <updated>1636857681791</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Menu, Collection, and a shortened book version added to the Books for temporary use. All without a database connection.">
+      <created>1636858288521</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1636858288521</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
