@@ -14,7 +14,7 @@ public class MainMenu {
     public static void main(String[] args) {
         while (running) { // i.e., while the application is running
             System.out.println("Enter 0 for loading the library." + "\n"
-                    + "Enter 1 to save and quit."+ "\n"
+                    + "Enter 1 to save and quit." + "\n"
                     + "Enter 2 for display of full library collection" + "\n"
                     + "Enter 3 for adding a book to the library." + "\n");
 
@@ -65,13 +65,13 @@ public class MainMenu {
         publisher = scan.next();
 
         // Creating a book object for this new book.
-        Books newBookAdded = new Books (author, title, yearPublished, isbn, publisher);
+        Books newBookAdded = new Books(author, title, yearPublished, isbn, publisher);
         // And adding it to the library.
         collection.addBook(newBookAdded);
 
     }
 
-    private static void loadScript (String name){
+    private static void loadScript(String name) {
         FileInputStream fis = null;
         ObjectInputStream scan = null;
 
