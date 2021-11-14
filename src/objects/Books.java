@@ -50,6 +50,19 @@ public class Books {
         this.information = information;
     }
 
+    public Books(String title, String isbn, int yearPublished, String publisher) {
+        // A shortened book entry for MainMenu.
+        // Temporary Added by Ance
+        this.title = title;
+        this.isbn = isbn;
+        this.yearPublished = yearPublished;
+        this.publisher = publisher;
+    }
+
+    public Books(String author, String title, int yearPublished, String isbn, String publisher) {
+
+    }
+
     public String getTitle() {
         return title;
     }
