@@ -73,17 +73,17 @@ CREATE TABLE Orders (
 
 
 
-INSERT INTO Books (id, title, isbn, authorID, yearPublished, pages, genre, publisher, edition, hasHardCover, clientID, orderID)
+INSERT INTO Books (id, title, isbn, authorID, yearPublished, pages, genre, publisher, edition, hasHardCover, userID, orderID)
 VALUES  (1, 'The Great Gatsby', '9780743273565', 1, 2004, 180, 'Classic Literature & Fiction', 'Scribner Book Company', 'first', 1, NULL, NULL),
         (2, 'This Side of Paradise', '9781593082437', 1, 2005, 320, 'Classic Literature & Fiction', 'Barnes & Noble', 'third', 0, NULL, NULL);
 
 
-INSERT INTO Books (title, isbn, authorID, yearPublished, "language", pages, genre, publisher, edition, hasHardCover, information, clientID, orderID)
+INSERT INTO Books (title, isbn, authorID, yearPublished, "language", pages, genre, publisher, edition, hasHardCover, information, userID, orderID)
 VALUES  ('Zemes dziesma', '9984000389', 2, 1994, 'Latvian', 179, 'Latviešu esejas', 'Preses nams', 'first', 0, '[mākslinieks Vilnis Didrihsons un tehniskā redaktore Olga Lovnika]', NULL, NULL),
         ('Baltais ceļš', '99984043045', 2, 1997, 'Latvian', 164, 'Latviešu literatūras pētniecība', 'Zvaigzne ABC', 'first', 0, 'studija par Annu Brigaderi', NULL, NULL),
         ('Dzejnieka uzdevums mūsdienās', '9984048829', 2, 1997, 'Latvian', 117, 'Esejas', 'Zvaigzne ABC', 'first', 1, 'Dzejnieki un akrobāti, kas manipulē ar vārdiem ; Dzīvesgudrie sirdsapziņas un ticības dziesminieki [no vācu valodas tulkojusi Rasma Vīlipa ; redaktore B. Cimermane ; pēcvārda autore Ingrīda Sokolova]', NULL, NULL);
 
-INSERT INTO Books (title, isbn, authorID, yearPublished, pages, genre, publisher, hasHardCover, information, clientID, orderID)
+INSERT INTO Books (title, isbn, authorID, yearPublished, pages, genre, publisher, hasHardCover, information, userID, orderID)
 VALUES  ('The Jack London Collection: The Call of the Wild, White Fang, To Build a Fire', '9781706754138', 3, 2019, 540, 'novels', 'Independently Published', 0, 'The Call of the Wild and White Fang, both set in the Klondike Gold Rush, as well as the short story To Build a Fire. Here you will find all three of these great works to enjoy in this John London collection', NULL, NULL),
         ('White Fang ; The Call of the Wild', '97801406211143',3,1994, 278, 'novels', 'Penguin Books', 0, 'American novels', NULL, NULL);
 
