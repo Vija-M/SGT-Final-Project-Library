@@ -17,9 +17,8 @@ public class MainMenu {
 
         System.out.println("********************Welcome to the Rustic Library!********************");
         System.out.println();
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Please enter 1 if you are a client or 2 if you are a librarian.");
-        if (sc.nextInt() == 2) {
+               System.out.println("Please enter 1 if you are a client or 2 if you are a librarian.");
+        if (scan.nextInt() == 2) {
             System.out.println("Please enter your userID");
             String userID = scan.next();
             MainMenu.librarianMenu();
