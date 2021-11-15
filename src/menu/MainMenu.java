@@ -1,6 +1,5 @@
 package menu;
 
-import com.sun.tools.javac.Main;
 import objects.Books;
 
 import java.io.*;
@@ -152,10 +151,10 @@ public class MainMenu {
                 //         BooksMenu.printMenu();
                 break;
             case 2:
-                AuthorsMenu.printMenu();
+                AuthorsMenu.menu();
                 break;
             case 3:
-                //          UsersMenu.printMenu();
+                UsersMenu.menu();
                 break;
             case 0:
                 return;

@@ -1,24 +1,24 @@
 package menu;
 
-import controllers.AuthorController;
+import controllers.UserController;
 
 import java.util.Scanner;
 
-public class AuthorsMenu {
+public class UsersMenu {
     static void menu() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to the authors' menu! Please, choose what do you want to do! ");
-        System.out.println("1. Add author ->");
+        System.out.println("Welcome to the users' menu! Please, choose what do you want to do! ");
+        System.out.println("1. Add user ->");
         System.out.println("2. Choose that return in MAIN MENU:");//return in main menu(RestaurantProgramList -> mainAction)
         System.out.println("0. Exit!");
         System.out.println();
         int inputSelection = scanner.nextInt();
         switch (inputSelection) {
             case 1:
-                AuthorController.addNewAuthor();
+                UserController.addNewUser();
                 break;
             case 2:
-                AuthorsMenu.execute();
+                menu.UsersMenu.execute();
                 break;
             case 0:
                 return;
