@@ -1,6 +1,5 @@
 package menu;
 
-import com.sun.tools.javac.Main;
 import objects.Books;
 
 import java.io.*;
@@ -17,9 +16,8 @@ public class MainMenu {
 
         System.out.println("********************Welcome to the Rustic Library!********************");
         System.out.println();
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Please enter 1 if you are a client or 2 if you are a librarian.");
-        if (sc.nextInt() == 2) {
+               System.out.println("Please enter 1 if you are a client or 2 if you are a librarian.");
+        if (scan.nextInt() == 2) {
             System.out.println("Please enter your userID");
             String userID = scan.next();
             MainMenu.librarianMenu();
@@ -153,10 +151,10 @@ public class MainMenu {
                 //         BooksMenu.printMenu();
                 break;
             case 2:
-                AuthorsMenu.printMenu();
+                AuthorsMenu.menu();
                 break;
             case 3:
-                //          UsersMenu.printMenu();
+                UsersMenu.menu();
                 break;
             case 0:
                 return;
