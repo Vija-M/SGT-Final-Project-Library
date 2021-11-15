@@ -1,5 +1,6 @@
 package menu;
 
+import com.sun.tools.javac.Main;
 import objects.Books;
 
 import java.io.*;
@@ -119,4 +120,38 @@ public class MainMenu {
             e.printStackTrace();
         }
     }
-}
+
+    public static void printLibrarianMenu() {
+
+            Scanner scanner = new Scanner(System.in);
+
+            System.out.println("Welcome to the internal system of Rustic Library!");
+            System.out.println("Please, choose one of the options below.");
+            System.out.println();
+            System.out.println("1--> choose action with BOOKS: ");
+            System.out.println("2--> choose action with AUTHORS: ");
+            System.out.println("3--> choose action with restaurant USERS: ");
+            System.out.println("0--> EXIT! ");
+            System.out.println();
+
+            int inputSelection = scanner.nextInt();
+
+            switch (inputSelection) {
+                case 1:
+                    //         BooksMenu.printMenu();
+                    break;
+                case 2:
+                    AuthorsMenu.printMenu();
+                    break;
+                case 3:
+                    //          UsersMenu.printMenu();
+                    break;
+                case 0:
+                    return;
+                default:
+                    System.out.println("Did not recognize this selection, please try again!");
+                    break;
+            }
+            System.exit(0);
+        }
+    }
