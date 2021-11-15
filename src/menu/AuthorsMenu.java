@@ -29,6 +29,7 @@ public class AuthorsMenu {
 
     public static void execute() {
         System.out.println("Welcome back to the menu for librarians!");
-        PrintMenu.printLibrarianMenu();
+        MainMenu.printLibrarianMenu();
     }
 }
+

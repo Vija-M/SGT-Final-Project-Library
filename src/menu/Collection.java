@@ -9,7 +9,7 @@ public class Collection {
     private List<Books> libraryCollection;
 
     public Collection() {
-        List<Books> libraryCollection = new ArrayList<Books>();
+        libraryCollection = new ArrayList<Books>();
     }
 
     public void addBook(Books book) {
