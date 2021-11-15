@@ -15,8 +15,8 @@ public class MainMenu {
         while (running) { // i.e., while the application is running
             System.out.println("Enter 0 for loading the library." + "\n"
                     + "Enter 1 to save and quit." + "\n"
-                    + "Enter 2 for display of full library collection" + "\n"
-                    + "Enter 3 for adding a book to the library." + "\n");
+                    + "Enter 2 to display full library collection" + "\n"
+                    + "Enter 3 to add a book to the library." + "\n");
 
             int clientResponse = scan.nextInt();
 
@@ -42,7 +42,6 @@ public class MainMenu {
         }
         System.exit(0);
 
-
     }
 
     private static void addBook() {
@@ -64,9 +63,10 @@ public class MainMenu {
         System.out.println("Enter the publisher. " + "\n");
         publisher = scan.next();
 
-        // Creating a book object for this new book.
+        // Creating a book object for this new book...
         Books newBookAdded = new Books(author, title, yearPublished, isbn, publisher);
-        // And adding it to the library.
+
+        // ...and adding it to the library.
         collection.addBook(newBookAdded);
 
     }
