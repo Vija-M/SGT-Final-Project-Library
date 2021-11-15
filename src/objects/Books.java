@@ -50,6 +50,19 @@ public class Books {
         this.information = information;
     }
 
+    public Books(String title, String isbn, int yearPublished, String publisher) {
+        // A shortened book entry for MainMenu.
+        // Temporary Added by Ance
+        this.title = title;
+        this.isbn = isbn;
+        this.yearPublished = yearPublished;
+        this.publisher = publisher;
+    }
+
+    public Books(String author, String title, int yearPublished, String isbn, String publisher) {
+
+    }
+
     public String getTitle() {
         return title;
     }
@@ -85,7 +98,7 @@ public class Books {
         } else {
             System.out.println("Author is not in the database. ");
             int newAuthorID = AuthorController.addNewAuthor();
-            if (newAuthorID != -1){
+            if (newAuthorID != -1) {
                 this.authorID = newAuthorID;
             } else {
                 System.out.println("Could not add new author, please try again! ");
