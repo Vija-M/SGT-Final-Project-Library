@@ -12,7 +12,26 @@ public class MainMenu {
     static Scanner scan = new Scanner(System.in);
     static Boolean running = true;
 
+
     public static void main(String[] args) {
+
+        System.out.println("********************Welcome to the Rustic Library!********************");
+        System.out.println();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Please enter 1 if you are a client or 2 if you are a librarian.");
+        if (sc.nextInt() == 2) {
+            System.out.println("Please enter your userID");
+            String userID = scan.next();
+            MainMenu.librarianMenu();
+        } else {
+            System.out.println("Please enter your clientID");
+            String clientID = scan.next();
+            MainMenu.clientMenu();
+        }
+    }
+
+
+    static void clientMenu() {
         while (running) { // i.e., while the application is running
             System.out.println("Enter 0 for loading the library." + "\n"
                     + "Enter 1 to save and quit." + "\n"
@@ -39,10 +58,8 @@ public class MainMenu {
                     addBook();
                     break;
             }
-
         }
         System.exit(0);
-
     }
 
     private static void addBook() {
@@ -69,7 +86,6 @@ public class MainMenu {
 
         // ...and adding it to the library.
         collection.addBook(newBookAdded);
-
     }
 
     private static void loadScript(String name) {
@@ -94,7 +110,6 @@ public class MainMenu {
         } else {
             System.out.println("The file does not exist." + "\n");
         }
-
     }
 
     private static void saveAndQuit() {
@@ -121,37 +136,34 @@ public class MainMenu {
         }
     }
 
-    public static void printLibrarianMenu() {
+    static void librarianMenu() {
+        System.out.println("Welcome to the internal system of Rustic Library!");
+        System.out.println("Please, choose one of the options below.");
+        System.out.println();
+        System.out.println("1--> choose action with BOOKS: ");
+        System.out.println("2--> choose action with AUTHORS: ");
+        System.out.println("3--> choose action with restaurant USERS: ");
+        System.out.println("0--> EXIT! ");
+        System.out.println();
 
-            Scanner scanner = new Scanner(System.in);
+        int inputSelection = scan.nextInt();
 
-            System.out.println("Welcome to the internal system of Rustic Library!");
-            System.out.println("Please, choose one of the options below.");
-            System.out.println();
-            System.out.println("1--> choose action with BOOKS: ");
-            System.out.println("2--> choose action with AUTHORS: ");
-            System.out.println("3--> choose action with restaurant USERS: ");
-            System.out.println("0--> EXIT! ");
-            System.out.println();
-
-            int inputSelection = scanner.nextInt();
-
-            switch (inputSelection) {
-                case 1:
-                    //         BooksMenu.printMenu();
-                    break;
-                case 2:
-                    AuthorsMenu.printMenu();
-                    break;
-                case 3:
-                    //          UsersMenu.printMenu();
-                    break;
-                case 0:
-                    return;
-                default:
-                    System.out.println("Did not recognize this selection, please try again!");
-                    break;
-            }
-            System.exit(0);
+        switch (inputSelection) {
+            case 1:
+                //         BooksMenu.printMenu();
+                break;
+            case 2:
+                AuthorsMenu.printMenu();
+                break;
+            case 3:
+                //          UsersMenu.printMenu();
+                break;
+            case 0:
+                return;
+            default:
+                System.out.println("Did not recognize this selection, please try again!");
+                break;
         }
+        System.exit(0);
     }
+}

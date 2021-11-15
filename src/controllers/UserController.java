@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class UserController {
-    private static Scanner scanner = new Scanner(System.in);
+    final private static Scanner scanner = new Scanner(System.in);
 
     public static int addNewUser() {
         System.out.print("Please, enter user's: ");
@@ -35,7 +35,7 @@ public class UserController {
 
             statement.execute(
                     "INSERT INTO Users (userFirstName, userLastName, email, phone, birthDate, address, city, country, postalCode, userHistory) " +
-                            "VALUES( '" + userFirstName + "', '" + userLastName + "' , '" + email + "' , '" + phone + "' , '" + birthDate + "' , '" + addNewUser() +
+                            "VALUES( '" + userFirstName + "', '" + userLastName + "' , '" + email + "' , '" + phone + "' , '" + birthDate + "' , '" + address +
                             "' , '" + city + "' , '" + country + "' , '" + postalCode + "' , '" + userHistory + "');");
 
             String queryLastRowInserted = "SELECT last_insert_rowid() AS userID;";
