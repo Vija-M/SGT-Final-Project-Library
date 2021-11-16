@@ -4,6 +4,7 @@ import com.sun.tools.javac.Main;
 import objects.Books;
 
 import java.io.*;
+import java.sql.*;
 import java.util.Scanner;
 
 public class MainMenu {
@@ -15,21 +16,16 @@ public class MainMenu {
 
     public static void main(String[] args) {
 
-        System.out.println("********************Welcome to the Rustic Library!********************");
-        System.out.println();
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Please enter 1 if you are a client or 2 if you are a librarian.");
-        if (sc.nextInt() == 2) {
-            System.out.println("Please enter your userID");
+        System.out.println("Welcome to the Library!" + "\n");
+        System.out.println("Please enter 1 if you are a client or 2 if you are a librarian." + "\n");
+        if (scan.nextInt() == 2) {
+            System.out.println("Please enter your userID.");
             String userID = scan.next();
             MainMenu.librarianMenu();
         } else {
-            System.out.println("Please enter your clientID");
-            String clientID = scan.next();
             MainMenu.clientMenu();
         }
     }
-
 
     static void clientMenu() {
         while (running) { // i.e., while the application is running
@@ -42,8 +38,8 @@ public class MainMenu {
 
             switch (clientResponse) {
                 case 0:
-                    System.out.println("Enter the file name to load.");
-                    loadScript(scan.next());
+                    System.out.println("Please, enter your client identification number.");
+                    loadClientInfo(scan.next());
                     break;
 
                 case 1:
@@ -88,28 +84,23 @@ public class MainMenu {
         collection.addBook(newBookAdded);
     }
 
-    private static void loadScript(String name) {
-        FileInputStream fis = null;
-        ObjectInputStream scan = null;
+    private static void loadClientInfo(String name) {
 
-        File file = new File(fileName);
-        if (file.exists()) {
-            try {
-                fis = new FileInputStream(file);
-                scan = new ObjectInputStream(fis);
+        String clientID = scan.next();
 
-                collection = (Collection) scan.readObject();
-                fis.close();
-                scan.close();
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:F:/javaProjects/SGT-Final-Project-Library/sql/library.db");
+            Statement statement = connection.createStatement();
+            statement.execute("SELECT * FROM library WHERE userID = " + clientID + ";");
+            ResultSet rs = statement.getResultSet();
+            rs.next();
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-        } else {
-            System.out.println("The file does not exist." + "\n");
+        } catch (SQLException exception) {
+            System.out.println("The account has not been found.");
         }
+
+        // Here should come in a function printing out client's info:
+        // - library status, books borrowed, unpaid fines etc
     }
 
     private static void saveAndQuit() {

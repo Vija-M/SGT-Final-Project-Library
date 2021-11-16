@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ccca81e-e042-4927-a58c-1e7d2c11c038" name="Default Changelist" comment="Ance's commit" />
+    <list default="true" id="8ccca81e-e042-4927-a58c-1e7d2c11c038" name="Default Changelist" comment="Ance's commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/controllers/AuthorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/controllers/AuthorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/controllers/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/menu/AuthorsMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/menu/AuthorsMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/menu/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/menu/MainMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/objects/Books.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/objects/Books.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menu/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/MainMenu.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +40,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="ToolWindowCommit.ShowToolbar" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../coding_examples" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
