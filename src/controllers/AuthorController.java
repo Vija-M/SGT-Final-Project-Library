@@ -1,6 +1,11 @@
 package controllers;
 
+import objects.Authors;
+
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -44,4 +49,67 @@ public class AuthorController {
             return -1;
         }
     }
+
+
+    public static boolean deleteAuthor() {
+
+        int id = findAuthorById().getAuthorID();
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/37126/SQLITE3/Library.db");
+            Statement statement = connection.createStatement();
+
+            statement.execute(
+                    "DELETE FROM authors WHERE authorID = " + id);
+
+            statement.close();
+            connection.close();
+            System.out.println("Author with id " + id + " is successfully removed from database");
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static Authors findAuthorById() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the ID of the author: ");
+        int id = scanner.nextInt();
+        System.out.println("");
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/37126/SQLITE3/Library.db");
+            Statement statement = connection.createStatement();
+
+            statement.execute(
+                    "SELECT * FROM authors WHERE authorID =" + id);
+
+            int authorID;
+            String authorName, authorInfo;
+            Date dateOfBirth, dateOfDeath;
+
+            Authors author = new Authors();
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            ResultSet rs = statement.getResultSet();
+            while (rs.next()) {
+                authorID = rs.getInt("authorID");
+                authorName = rs.getString("authorName");
+                dateOfBirth = formatter.parse(rs.getString("dateOfBirth"));
+                dateOfDeath = formatter.parse(rs.getString("dateOfDeath"));
+                authorInfo = rs.getString("authorInfo");
+
+                System.out.println(authorID + "\t" + authorName + "\t" + dateOfBirth + "\t" + dateOfDeath + "\t" + authorInfo);
+                statement.close();
+                connection.close();
+            }
+            return author;
+        } catch (SQLException | ParseException throwables) {
+            throwables.printStackTrace();
+            System.out.println("Failed to add new author. Try again.");
+            return null;
+        }
+    }
+
 }
