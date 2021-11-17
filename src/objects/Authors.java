@@ -10,6 +10,9 @@ public class Authors {
     private Date dateOfDeath;
     private String authorInfo;
 
+    public Authors() {
+    }
+
     public Authors(int authorID, String userName, Date dateOfBirth, Date dateOfDeath, String authorInfo) {
         this.authorID = authorID;
         this.authorName = userName;
