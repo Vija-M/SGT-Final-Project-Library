@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class MainMenu {
     static String fileName = null;
-    static Collection collection = new Collection();
+    static LibraryCollection collection = new LibraryCollection();
     static Scanner scan = new Scanner(System.in);
     static Boolean running = true;
 
@@ -31,7 +31,7 @@ public class MainMenu {
         while (running) { // i.e., while the application is running
             System.out.println("Enter 0 for entering your library account." + "\n"
                     + "Enter 1 to save and quit." + "\n"
-                    + "Enter 2 to display full library collection" + "\n"
+                    + "Enter 2 to display full library collection and search for a book" + "\n"
                     + "Enter 3 to add a book to the library.");
 
             int clientResponse = scan.nextInt();
@@ -42,22 +42,64 @@ public class MainMenu {
                     break;
 
                 case 1:
-                    saveAndQuit();
+                    MainMenu.saveAndQuit();
                     break;
 
                 case 2:
                     System.out.println(collection.toString());
+                    MainMenu.searchBook();
                     break;
 
                 case 3:
-                    addBook();
+                    returnBook();
                     break;
             }
         }
         System.exit(0);
     }
 
-    private static void addBook() {
+    private static void searchBook() {
+
+            System.out.println("Please, enter the title of the book you are looking for.");
+            String title = scan.next();
+
+            try {
+                Connection connection = DriverManager.getConnection("jdbc:sqlite:F:/javaProjects/SGT-Final-Project-Library/sql/library.db");
+                Statement statement = connection.createStatement();
+                statement.execute("SELECT * FROM Books JOIN Authors ON Books.authorID = Authors.authorID WHERE Books.title =" + " '" + title + "' ;");
+
+                PreparedStatement bookInfo = connection.prepareStatement("SELECT authorID, yearPublished, publisher, edition, orderID, authorName FROM Books JOIN Authors WHERE Books.title = " + "'" + title + "';");
+                ResultSet rs = statement.getResultSet();
+
+                String authorID = rs.getString(1);
+                String yearPublished = rs.getString(2);
+                String publisher = rs.getString(3);
+                String edition = rs.getString(4);
+                int availability = rs.getInt(5); // 1 means the book is unavailable
+                String authorName = rs.getString(6);
+
+                if (availability != 1) {
+                    System.out.println("Your book " + title + edition + " written by " + authorName + "\n"
+                            + "(published in: " + yearPublished + " by " + publisher + ") " + "\n"
+                            + " is shelved and available to borrow." + "\n");
+                } else {
+                    System.out.println("Your book " + title + edition + " written by " + authorName + "\n"
+                            + "(published in: " + yearPublished + " by " + publisher + ") " + "\n"
+                            + " is unavailable.");
+                }
+
+                statement.close();
+                connection.close();
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+                System.out.println("The book with this title has not been found.");
+
+                System.exit(0);
+            }
+            }
+
+        private static void returnBook() {
         int yearPublished;
         String author, title, isbn, publisher;
 
@@ -150,7 +192,6 @@ public class MainMenu {
             statement.execute("SELECT * FROM Users WHERE userID = " + clientID + ";");
 
             PreparedStatement clientInfo = connection.prepareStatement("SELECT userFirstName, userLastName, userHistory FROM Users WHERE userID = " + clientID + ";");
-            // clientInfo.setString(0, clientID);
 
             ResultSet rs = clientInfo.executeQuery();
 
