@@ -16,8 +16,8 @@ public class MainMenu {
 
     public static void main(String[] args) {
 
-        System.out.println("Welcome to the Library!" + "\n");
-        System.out.println("Please enter 1 if you are a client or 2 if you are a librarian." + "\n");
+        System.out.println("Welcome to the Library!");
+        System.out.println("Please enter 1 if you are a client or 2 if you are a librarian.");
         if (scan.nextInt() == 2) {
             System.out.println("Please enter your userID.");
             String userID = scan.next();
@@ -29,17 +29,16 @@ public class MainMenu {
 
     static void clientMenu() {
         while (running) { // i.e., while the application is running
-            System.out.println("Enter 0 for loading the library." + "\n"
+            System.out.println("Enter 0 for entering your library account." + "\n"
                     + "Enter 1 to save and quit." + "\n"
                     + "Enter 2 to display full library collection" + "\n"
-                    + "Enter 3 to add a book to the library." + "\n");
+                    + "Enter 3 to add a book to the library.");
 
             int clientResponse = scan.nextInt();
 
             switch (clientResponse) {
                 case 0:
-                    System.out.println("Please, enter your client identification number.");
-                    loadClientInfo(scan.next());
+                    MainMenu.loadClientInfo();
                     break;
 
                 case 1:
@@ -84,24 +83,6 @@ public class MainMenu {
         collection.addBook(newBookAdded);
     }
 
-    private static void loadClientInfo(String name) {
-
-        String clientID = scan.next();
-
-        try {
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:F:/javaProjects/SGT-Final-Project-Library/sql/library.db");
-            Statement statement = connection.createStatement();
-            statement.execute("SELECT * FROM library WHERE userID = " + clientID + ";");
-            ResultSet rs = statement.getResultSet();
-            rs.next();
-
-        } catch (SQLException exception) {
-            System.out.println("The account has not been found.");
-        }
-
-        // Here should come in a function printing out client's info:
-        // - library status, books borrowed, unpaid fines etc
-    }
 
     private static void saveAndQuit() {
         System.out.println("Enter file name: ");
@@ -156,5 +137,38 @@ public class MainMenu {
                 break;
         }
         System.exit(0);
+    }
+
+    private static void loadClientInfo() {
+
+        System.out.println("Please, enter your client identification number.");
+        String clientID = scan.next();
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:F:/javaProjects/SGT-Final-Project-Library/sql/library.db");
+            Statement statement = connection.createStatement();
+            statement.execute("SELECT * FROM Users WHERE userID = " + clientID + ";");
+
+            PreparedStatement clientInfo = connection.prepareStatement("SELECT userFirstName, userLastName, userHistory FROM Users WHERE userID = " + clientID + ";");
+            // clientInfo.setString(0, clientID);
+
+            ResultSet rs = clientInfo.executeQuery();
+
+            String clientName = rs.getString(1);
+            String clientSurname = rs.getString(2);
+            String clientHistory = rs.getString(3);
+
+            System.out.println("Welcome " + clientName + " " + clientSurname + "\n"
+                    + "Your client history is: " + clientHistory + "\n");
+
+            statement.close();
+            connection.close();
+            System.exit(0);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            System.out.println("The account has not been found.");
+        }
+
     }
 }
