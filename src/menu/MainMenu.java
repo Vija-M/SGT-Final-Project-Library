@@ -42,22 +42,27 @@ public class MainMenu {
                     break;
 
                 case 1:
-                    saveAndQuit();
+                    MainMenu.saveAndQuit();
                     break;
 
                 case 2:
                     System.out.println(collection.toString());
+                    searchBook();
                     break;
 
                 case 3:
-                    addBook();
+                    returnBook();
                     break;
             }
         }
         System.exit(0);
     }
 
-    private static void addBook() {
+    private static void searchBook() {
+        //... code to come
+    }
+
+    private static void returnBook() {
         int yearPublished;
         String author, title, isbn, publisher;
 
