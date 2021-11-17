@@ -1,6 +1,5 @@
 package menu;
 
-import com.sun.tools.javac.Main;
 import objects.Books;
 
 import java.io.*;
@@ -15,6 +14,7 @@ public class MainMenu {
 
 
     public static void main(String[] args) {
+
 
         System.out.println("Welcome to the Library!");
         System.out.println("Please enter 1 if you are a client or 2 if you are a librarian.");
@@ -125,10 +125,10 @@ public class MainMenu {
                 //         BooksMenu.printMenu();
                 break;
             case 2:
-                AuthorsMenu.printMenu();
+                AuthorsMenu.menu();
                 break;
             case 3:
-                //          UsersMenu.printMenu();
+                UsersMenu.menu();
                 break;
             case 0:
                 return;
