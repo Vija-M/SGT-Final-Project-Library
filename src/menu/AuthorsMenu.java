@@ -1,11 +1,14 @@
 package menu;
 
 import controllers.AuthorController;
+import util.DBHelper;
 
+import java.beans.Statement;
+import java.sql.Connection;
 import java.util.Scanner;
 
 public class AuthorsMenu {
-    static void printMenu() {
+     static void printMenu() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the authors' menu! Please, choose what do you want to do! ");
         System.out.println("1. Add author ->");

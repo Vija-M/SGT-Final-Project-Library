@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ccca81e-e042-4927-a58c-1e7d2c11c038" name="Default Changelist" comment="Ance's commit" />
+    <list default="true" id="8ccca81e-e042-4927-a58c-1e7d2c11c038" name="Default Changelist" comment="Books class, Books controller, fixes for all controllers">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/AuthorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AuthorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menu/AuthorsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/AuthorsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menu/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/Books.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/Books.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Vija1" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -44,6 +51,9 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\javaProjects\SGT-Final-Project-Library" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="util" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="util" />
@@ -78,11 +88,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Users" />
         <item itemvalue="Application.MainMenu" />
         <item itemvalue="Application.Users" />
-        <item itemvalue="Application.Users" />
-        <item itemvalue="Application.Users" />
-        <item itemvalue="Application.Users" />
+        <item itemvalue="Application.MainMenu" />
+        <item itemvalue="Application.MainMenu" />
       </list>
     </recent_temporary>
   </component>
@@ -378,6 +388,7 @@
     <MESSAGE value="Menu, Collection, and a shortened book version added to the Books for temporary use (without database connection)." />
     <MESSAGE value="MainMenu" />
     <MESSAGE value="Ance's commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ance's commit" />
+    <MESSAGE value="Books class, Books controller, fixes for all controllers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Books class, Books controller, fixes for all controllers" />
   </component>
 </project>

@@ -2,6 +2,7 @@ package menu;
 
 import com.sun.tools.javac.Main;
 import objects.Books;
+import util.DBHelper;
 
 import java.io.*;
 import java.util.Scanner;
@@ -11,10 +12,10 @@ public class MainMenu {
     static Collection collection = new Collection();
     static Scanner scan = new Scanner(System.in);
     static Boolean running = true;
+    public static DBHelper helper;
 
-
-    public static void main(String[] args) {
-
+    public void main(String[] args) {
+        helper = new DBHelper();
         System.out.println("********************Welcome to the Rustic Library!********************");
         System.out.println();
         Scanner sc = new Scanner(System.in);
