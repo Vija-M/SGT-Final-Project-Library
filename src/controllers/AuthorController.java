@@ -3,6 +3,8 @@ package controllers;
 import objects.Authors;
 
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
@@ -58,7 +60,7 @@ public class AuthorController {
             Statement statement = connection.createStatement();
 
             statement.execute(
-                    "DELETE FROM students WHERE id = " + id);
+                    "DELETE FROM authors WHERE authorID = " + id);
 
             statement.close();
             connection.close();
@@ -89,12 +91,13 @@ public class AuthorController {
             Date dateOfBirth, dateOfDeath;
 
             Authors author = new Authors();
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             ResultSet rs = statement.getResultSet();
             while (rs.next()) {
                 authorID = rs.getInt("authorID");
                 authorName = rs.getString("authorName");
-                dateOfBirth = rs.getDate("dateOfBirth", Calendar.getInstance());
-                dateOfDeath = rs.getDate("dateOfDeath", Calendar.getInstance());
+                dateOfBirth = formatter.parse(rs.getString("dateOfBirth"));
+                dateOfDeath = formatter.parse(rs.getString("dateOfDeath"));
                 authorInfo = rs.getString("authorInfo");
 
                 System.out.println(authorID + "\t" + authorName + "\t" + dateOfBirth + "\t" + dateOfDeath + "\t" + authorInfo);
@@ -102,7 +105,7 @@ public class AuthorController {
                 connection.close();
             }
             return author;
-        } catch (SQLException throwables) {
+        } catch (SQLException | ParseException throwables) {
             throwables.printStackTrace();
             System.out.println("Failed to add new author. Try again.");
             return null;
