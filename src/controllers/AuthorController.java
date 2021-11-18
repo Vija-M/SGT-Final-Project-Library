@@ -61,10 +61,10 @@ public class AuthorController {
 
             statement.execute(
                     "DELETE FROM authors WHERE authorID = " + id);
-
+            System.out.println("Author with id " + id + " is successfully removed from database");
             statement.close();
             connection.close();
-            System.out.println("Author with id " + id + " is successfully removed from database");
+
             return true;
 
         } catch (Exception e) {
@@ -72,6 +72,52 @@ public class AuthorController {
             return false;
         }
     }
+
+
+    public static boolean updateAuthor() {
+
+        Scanner scanner = new Scanner(System.in);
+        int id = findAuthorById().getAuthorID();
+
+        System.out.println("");
+        System.out.println("What information do you want to change?");
+        System.out.println("Please, print:  \n ---> 1 for NAME; \n ---> 2 for DATE OF BIRTH; \n ---> 3 for DATE OF BIRTH \n ---> 4 for INFORMATION");
+        int column = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("");
+        System.out.println("Enter new information: ");
+        String info = scanner.nextLine().trim();
+        System.out.println("");
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/37126/SQLITE3/Library.db");
+            Statement statement = connection.createStatement();
+
+            if (column == 1) {
+                statement.execute("UPDATE Authors SET authorName = \"" + info + "\" WHERE authorID = " + id + ";");
+
+            } else if (column == 2) {
+                System.out.println("Use date format: yyyy-MM-dd");
+                statement.execute("UPDATE Authors SET dateOfBirth = \"" + info + "\" WHERE authorID = " + id + ";");
+
+            } else if (column == 3) {
+                System.out.println("Use date format: yyyy-MM-dd");
+                statement.execute("UPDATE Authors SET dateOfDeath = \"" + info + "\" WHERE authorID = " + id + ";");
+
+            } else if (column == 4) {
+                statement.execute("UPDATE authors SET authorInfo = \"" + info + "\" WHERE authorID = " + id + ";");
+            } else {
+                System.out.println("Update failed. Please check data and try again.");
+            }
+
+            System.out.println("Successfully updated! Information added: " + info);
+            return true;
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            return false;
+        }
+    }
+
 
     public static Authors findAuthorById() {
         Scanner scanner = new Scanner(System.in);
@@ -100,7 +146,7 @@ public class AuthorController {
                 dateOfDeath = formatter.parse(rs.getString("dateOfDeath"));
                 authorInfo = rs.getString("authorInfo");
 
-                System.out.println(authorID + "\t" + authorName + "\t" + dateOfBirth + "\t" + dateOfDeath + "\t" + authorInfo);
+                System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + " Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo);
                 statement.close();
                 connection.close();
             }
@@ -111,5 +157,4 @@ public class AuthorController {
             return null;
         }
     }
-
 }
