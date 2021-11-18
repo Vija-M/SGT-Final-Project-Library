@@ -26,6 +26,9 @@ public class AuthorsMenu {
                 AuthorController.findAuthorById();
                 break;
             case 4:
+                AuthorController.updateAuthor();
+                break;
+            case 5:
                 AuthorsMenu.execute();
                 break;
             case 0:
