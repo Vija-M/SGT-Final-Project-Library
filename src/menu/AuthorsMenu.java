@@ -11,7 +11,8 @@ public class AuthorsMenu {
         System.out.println("1. Add an author ->");
         System.out.println("2. Remove an author ->");
         System.out.println("3. Find author by ID ->");
-        System.out.println("4. Choose that for to return in MAIN MENU:");//return in main menu(RestaurantProgramList -> mainAction)
+        System.out.println("4. Update any information about author by ID ->");
+        System.out.println("5. Choose that for to return in MAIN MENU:");//return in main menu(RestaurantProgramList -> mainAction)
         System.out.println("0. Exit!");
         System.out.println();
         int inputSelection = scanner.nextInt();
@@ -26,6 +27,9 @@ public class AuthorsMenu {
                 AuthorController.findAuthorById();
                 break;
             case 4:
+                AuthorController.updateAuthor();
+                break;
+            case 5:
                 AuthorsMenu.execute();
                 break;
             case 0:
