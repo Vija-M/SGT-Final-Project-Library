@@ -35,9 +35,9 @@ public class AuthorsMenu {
                 AuthorController.updateAuthor();
                 break;
             case 6:
-                AuthorController.updateAuthor();
+                AuthorController.printAllAuthors();
                 break;
-                case 7:
+            case 7:
                 AuthorsMenu.execute();
                 break;
             case 0:
@@ -46,7 +46,6 @@ public class AuthorsMenu {
                 System.out.println("Did not recognize this selection, please try again!");
         }
     }
-
 
 
     public static void execute() {
