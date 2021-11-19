@@ -1,10 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="8ccca81e-e042-4927-a58c-1e7d2c11c038" name="Default Changelist" comment="MainMenu modified">
       <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/controllers/AuthorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/controllers/AuthorController.class" afterDir="false" />
+=======
+    <list default="true" id="8ccca81e-e042-4927-a58c-1e7d2c11c038" name="Default Changelist" comment="Books class added, Books controller added, fixes for all controllers, some minor overall fixes">
+      <change afterPath="$PROJECT_DIR$/src/menu/UsersMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/objects/Orders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/controllers/AuthorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/controllers/AuthorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/controllers/UserController.class" afterDir="false" />
+>>>>>>> origin/master
       <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/menu/AuthorsMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/menu/AuthorsMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/menu/Collection.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/menu/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/menu/MainMenu.class" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/menu/PrintMenu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/objects/Authors.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/objects/Books.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/objects/Books.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/objects/RolesAndAccess.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/objects/UserAccess.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/objects/Users.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/util/Color.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/library.db" beforeDir="false" afterPath="$PROJECT_DIR$/sql/Library.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/AuthorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AuthorController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menu/AuthorsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/AuthorsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menu/Collection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/LibraryCollection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menu/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/Authors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/Authors.java" afterDir="false" />
+>>>>>>> origin/master
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +47,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Vija1" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -36,7 +62,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="ToolWindowCommit.ShowToolbar" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../coding_examples" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -48,6 +74,9 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\javaProjects\SGT-Final-Project-Library" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="util" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="util" />
@@ -82,11 +111,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Users" />
         <item itemvalue="Application.MainMenu" />
         <item itemvalue="Application.Users" />
-        <item itemvalue="Application.Users" />
-        <item itemvalue="Application.Users" />
-        <item itemvalue="Application.Users" />
+        <item itemvalue="Application.MainMenu" />
+        <item itemvalue="Application.MainMenu" />
       </list>
     </recent_temporary>
   </component>
@@ -358,12 +387,12 @@
       <option name="project" value="LOCAL" />
       <updated>1636940401368</updated>
     </task>
-    <task id="LOCAL-00038" summary="Ance's commit">
-      <created>1637036972071</created>
+    <task id="LOCAL-00038" summary="Books class added, Books controller added, fixes for all controllers, some minor overall fixes">
+      <created>1637181380626</created>
       <option name="number" value="00038" />
       <option name="presentableId" value="LOCAL-00038" />
       <option name="project" value="LOCAL" />
-      <updated>1637036972071</updated>
+      <updated>1637181380627</updated>
     </task>
     <task id="LOCAL-00039" summary="MainMenu modified">
       <created>1637352375110</created>
@@ -396,7 +425,13 @@
     <MESSAGE value="Menu, Collection, and a shortened book version added to the Books for temporary use (without database connection)." />
     <MESSAGE value="MainMenu" />
     <MESSAGE value="Ance's commit" />
+<<<<<<< HEAD
     <MESSAGE value="MainMenu modified" />
     <option name="LAST_COMMIT_MESSAGE" value="MainMenu modified" />
+=======
+    <MESSAGE value="Books class, Books controller, fixes for all controllers" />
+    <MESSAGE value="Books class added, Books controller added, fixes for all controllers, some minor overall fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Books class added, Books controller added, fixes for all controllers, some minor overall fixes" />
+>>>>>>> origin/master
   </component>
 </project>

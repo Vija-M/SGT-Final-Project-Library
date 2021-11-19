@@ -1,6 +1,7 @@
 package menu;
 
 import objects.Books;
+import util.DBHelper;
 
 import java.io.*;
 import java.sql.*;
@@ -11,11 +12,12 @@ public class MainMenu {
     static LibraryCollection collection = new LibraryCollection();
     static Scanner scan = new Scanner(System.in);
     static Boolean running = true;
+    public static DBHelper helper;
 
-
-    public static void main(String[] args) {
-
+    public void main(String[] args) {
+        helper = new DBHelper();
         System.out.println("Welcome to the Library!");
+
         System.out.println("Please enter 1 if you are a client or 2 if you are a librarian.");
         if (scan.nextInt() == 2) {
             System.out.println("Please enter your userID.");

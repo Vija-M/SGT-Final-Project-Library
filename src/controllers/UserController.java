@@ -1,12 +1,14 @@
 package controllers;
 
+import menu.MainMenu;
+
 import java.sql.*;
 import java.util.Scanner;
 
 public class UserController {
     final private static Scanner scanner = new Scanner(System.in);
 
-    public static int addNewUser() {
+    public static int addNewUser(Connection connection, Statement statement) {
         System.out.print("Please, enter user's: ");
         System.out.print("first name: ");
         String userFirstName = scanner.nextLine();
@@ -30,9 +32,7 @@ public class UserController {
         String userHistory = scanner.nextLine();
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/37126/SQLITE3/Library.db");
-            Statement statement = connection.createStatement();
-
+            statement = MainMenu.helper.getStatment();
             statement.execute(
                     "INSERT INTO Users (userFirstName, userLastName, email, phone, birthDate, address, city, country, postalCode, userHistory) " +
                             "VALUES( '" + userFirstName + "', '" + userLastName + "' , '" + email + "' , '" + phone + "' , '" + birthDate + "' , '" + address +
@@ -44,8 +44,6 @@ public class UserController {
             rs.next();
             int generatedID = rs.getInt("userID");
 
-            statement.close();
-            connection.close();
             System.out.println("Successfully added new user " + userFirstName + userLastName + "with ID:" + generatedID);
             return generatedID;
         } catch (SQLException throwables) {

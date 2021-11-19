@@ -1,7 +1,10 @@
 package objects;
 
 import controllers.AuthorController;
+import util.DBHelper;
 
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.StringJoiner;
 
 public class Books {
