@@ -1,15 +1,13 @@
 package controllers;
 
 import menu.AuthorsMenu;
-import menu.MainMenu;
 import objects.Authors;
 
 import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.util.*;
 import java.util.Date;
-import java.util.Scanner;
 
 public class AuthorController {
     private static Scanner scanner = new Scanner(System.in);
@@ -200,6 +198,39 @@ public class AuthorController {
         }
 
     }
+
+    public static String printAllAuthors() {
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/37126/SQLITE3/Library.db");
+            Statement statement = connection.createStatement();
+            statement.execute("SELECT * FROM authors;");
+
+            int authorID;
+            String authorName, authorInfo;
+            Date dateOfBirth, dateOfDeath;
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            ResultSet rs = statement.getResultSet();
+            authorID = rs.getInt("authorID");
+            authorName = rs.getString("authorName");
+            dateOfBirth = formatter.parse(rs.getString("dateOfBirth"));
+            dateOfDeath = formatter.parse(rs.getString("dateOfDeath"));
+            authorInfo = rs.getString("authorInfo");
+            if (rs.next()) {
+                do {
+                    System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + "Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo);
+                } while (rs.next());
+            } else {
+                System.out.println("Record Not Found...");
+            }
+            statement.close();
+            connection.close();
+            AuthorController.execute();
+        } catch (SQLException | ParseException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
 
     public static void execute() {
         System.out.print("If you want to continue print: Y");
