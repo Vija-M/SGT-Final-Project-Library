@@ -1,5 +1,7 @@
 package controllers;
 
+import menu.AuthorsMenu;
+import menu.MainMenu;
 import objects.Authors;
 
 import java.sql.*;
@@ -146,7 +148,7 @@ public class AuthorController {
                 dateOfDeath = formatter.parse(rs.getString("dateOfDeath"));
                 authorInfo = rs.getString("authorInfo");
 
-                System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + " Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo);
+                System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + "Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo);
                 statement.close();
                 connection.close();
             }
@@ -155,6 +157,56 @@ public class AuthorController {
             throwables.printStackTrace();
             System.out.println("Failed to add new author. Try again.");
             return null;
+        }
+    }
+
+    public static Authors findAuthorByName() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the name of the author: ");
+        String name = scanner.nextLine().trim();
+        System.out.println("");
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/37126/SQLITE3/Library.db");
+            Statement statement = connection.createStatement();
+
+            statement.execute(
+                    "SELECT * FROM authors WHERE authorName = \"" + name + "\";");
+
+            int authorID;
+            String authorName, authorInfo;
+            Date dateOfBirth, dateOfDeath;
+
+            Authors author = new Authors();
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            ResultSet rs = statement.getResultSet();
+            while (rs.next()) {
+                authorID = rs.getInt("authorID");
+                authorName = rs.getString("authorName");
+                dateOfBirth = formatter.parse(rs.getString("dateOfBirth"));
+                dateOfDeath = formatter.parse(rs.getString("dateOfDeath"));
+                authorInfo = rs.getString("authorInfo");
+
+                System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + "Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo);
+                statement.close();
+                connection.close();
+                AuthorController.execute();
+            }
+            return author;
+        } catch (SQLException | ParseException throwables) {
+            throwables.printStackTrace();
+            System.out.println("Failed to add new author. Try again.");
+            return null;
+        }
+
+    }
+
+    public static void execute() {
+        System.out.print("If you want to continue print: Y");
+        String answer = scanner.next();
+        if (answer.equals("Y")) {
+            System.out.println("Welcome back to the menu for librarians!");
+            AuthorsMenu.menu();
         }
     }
 }
