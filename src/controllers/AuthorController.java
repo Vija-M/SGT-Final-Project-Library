@@ -231,7 +231,6 @@ public class AuthorController {
         return null;
     }
 
-
     public static void execute() {
         System.out.println("If you want to go back to menu print: y");
         String answer = scanner.next();
