@@ -230,7 +230,6 @@ public class AuthorController {
         return null;
     }
 
-
     public static void execute() {
         System.out.print("If you want to continue print: Y");
         String answer = scanner.next();
