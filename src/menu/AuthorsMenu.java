@@ -13,7 +13,8 @@ public class AuthorsMenu {
         System.out.println("3. Find author by ID ->");
         System.out.println("4. Find author by name ->");
         System.out.println("5. Update any information about author by ID ->");
-        System.out.println("6. Choose that for to return in MAIN MENU:");//return in main menu(RestaurantProgramList -> mainAction)
+        System.out.println("6. Print all authors ->");
+        System.out.println("7. Choose that for to return in MAIN MENU:");//return in main menu(RestaurantProgramList -> mainAction)
         System.out.println("0. Exit!");
         System.out.println();
         int inputSelection = scanner.nextInt();
@@ -34,6 +35,9 @@ public class AuthorsMenu {
                 AuthorController.updateAuthor();
                 break;
             case 6:
+                AuthorController.updateAuthor();
+                break;
+                case 7:
                 AuthorsMenu.execute();
                 break;
             case 0:
@@ -42,6 +46,8 @@ public class AuthorsMenu {
                 System.out.println("Did not recognize this selection, please try again!");
         }
     }
+
+
 
     public static void execute() {
         System.out.println("Welcome back to the menu for librarians!");
