@@ -8,7 +8,7 @@ public class Books {
     private int id;
     private String title;
     private String isbn;
-    private int authorID;
+    public int authorID;
     private int yearPublished;
     private String language;
     private int pages;
@@ -59,9 +59,7 @@ public class Books {
         this.publisher = publisher;
     }
 
-    public Books(String author, String title, int yearPublished, String isbn, String publisher) {
 
-    }
 
     public String getTitle() {
         return title;
