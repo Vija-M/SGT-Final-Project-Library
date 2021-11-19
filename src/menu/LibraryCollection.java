@@ -5,10 +5,10 @@ import objects.Books;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Collection {
+public class LibraryCollection {
     private List<Books> libraryCollection;
 
-    public Collection() {
+    public LibraryCollection() {
         libraryCollection = new ArrayList<Books>();
     }
 

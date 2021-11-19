@@ -1,15 +1,15 @@
 package menu;
 
-import com.sun.tools.javac.Main;
 import objects.Books;
 import util.DBHelper;
 
 import java.io.*;
+import java.sql.*;
 import java.util.Scanner;
 
 public class MainMenu {
     static String fileName = null;
-    static Collection collection = new Collection();
+    static LibraryCollection collection = new LibraryCollection();
     static Scanner scan = new Scanner(System.in);
     static Boolean running = true;
     public static DBHelper helper;
@@ -19,51 +19,90 @@ public class MainMenu {
         System.out.println("********************Welcome to the Rustic Library!********************");
         System.out.println();
         Scanner sc = new Scanner(System.in);
+
         System.out.println("Please enter 1 if you are a client or 2 if you are a librarian.");
-        if (sc.nextInt() == 2) {
-            System.out.println("Please enter your userID");
+        if (scan.nextInt() == 2) {
+            System.out.println("Please enter your userID.");
             String userID = scan.next();
             MainMenu.librarianMenu();
         } else {
-            System.out.println("Please enter your clientID");
-            String clientID = scan.next();
             MainMenu.clientMenu();
         }
     }
 
-
     static void clientMenu() {
         while (running) { // i.e., while the application is running
-            System.out.println("Enter 0 for loading the library." + "\n"
+            System.out.println("Enter 0 for entering your library account." + "\n"
                     + "Enter 1 to save and quit." + "\n"
-                    + "Enter 2 to display full library collection" + "\n"
-                    + "Enter 3 to add a book to the library." + "\n");
+                    + "Enter 2 to display full library collection and search for a book" + "\n"
+                    + "Enter 3 to add a book to the library.");
 
             int clientResponse = scan.nextInt();
 
             switch (clientResponse) {
                 case 0:
-                    System.out.println("Enter the file name to load.");
-                    loadScript(scan.next());
+                    MainMenu.loadClientInfo();
                     break;
 
                 case 1:
-                    saveAndQuit();
+                    MainMenu.saveAndQuit();
                     break;
 
                 case 2:
                     System.out.println(collection.toString());
+                    MainMenu.searchBook();
                     break;
 
                 case 3:
-                    addBook();
+                    returnBook();
                     break;
             }
         }
         System.exit(0);
     }
 
-    private static void addBook() {
+    private static void searchBook() {
+
+            System.out.println("Please, enter the title of the book you are looking for.");
+            String title = scan.next();
+
+            try {
+                Connection connection = DriverManager.getConnection("jdbc:sqlite:F:/javaProjects/SGT-Final-Project-Library/sql/library.db");
+                Statement statement = connection.createStatement();
+                statement.execute("SELECT * FROM Books JOIN Authors ON Books.authorID = Authors.authorID WHERE Books.title =" + " '" + title + "' ;");
+
+                PreparedStatement bookInfo = connection.prepareStatement("SELECT authorID, yearPublished, publisher, edition, orderID, authorName FROM Books JOIN Authors WHERE Books.title = " + "'" + title + "';");
+                ResultSet rs = statement.getResultSet();
+
+                String authorID = rs.getString(1);
+                String yearPublished = rs.getString(2);
+                String publisher = rs.getString(3);
+                String edition = rs.getString(4);
+                int availability = rs.getInt(5); // 1 means the book is unavailable
+                String authorName = rs.getString(6);
+
+                if (availability != 1) {
+                    System.out.println("Your book " + title + edition + " written by " + authorName + "\n"
+                            + "(published in: " + yearPublished + " by " + publisher + ") " + "\n"
+                            + " is shelved and available to borrow." + "\n");
+                } else {
+                    System.out.println("Your book " + title + edition + " written by " + authorName + "\n"
+                            + "(published in: " + yearPublished + " by " + publisher + ") " + "\n"
+                            + " is unavailable.");
+                }
+
+                statement.close();
+                connection.close();
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+                System.out.println("The book with this title has not been found.");
+
+                System.exit(0);
+            }
+            }
+
+        private static void returnBook() {
         int yearPublished;
         String author, title, isbn, publisher;
 
@@ -89,29 +128,6 @@ public class MainMenu {
         collection.addBook(newBookAdded);
     }
 
-    private static void loadScript(String name) {
-        FileInputStream fis = null;
-        ObjectInputStream scan = null;
-
-        File file = new File(fileName);
-        if (file.exists()) {
-            try {
-                fis = new FileInputStream(file);
-                scan = new ObjectInputStream(fis);
-
-                collection = (Collection) scan.readObject();
-                fis.close();
-                scan.close();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-        } else {
-            System.out.println("The file does not exist." + "\n");
-        }
-    }
 
     private static void saveAndQuit() {
         System.out.println("Enter file name: ");
@@ -154,10 +170,10 @@ public class MainMenu {
                 //         BooksMenu.printMenu();
                 break;
             case 2:
-                AuthorsMenu.printMenu();
+                AuthorsMenu.menu();
                 break;
             case 3:
-                //          UsersMenu.printMenu();
+                UsersMenu.menu();
                 break;
             case 0:
                 return;
@@ -166,5 +182,37 @@ public class MainMenu {
                 break;
         }
         System.exit(0);
+    }
+
+    private static void loadClientInfo() {
+
+        System.out.println("Please, enter your client identification number.");
+        String clientID = scan.next();
+
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:F:/javaProjects/SGT-Final-Project-Library/sql/library.db");
+            Statement statement = connection.createStatement();
+            statement.execute("SELECT * FROM Users WHERE userID = " + clientID + ";");
+
+            PreparedStatement clientInfo = connection.prepareStatement("SELECT userFirstName, userLastName, userHistory FROM Users WHERE userID = " + clientID + ";");
+
+            ResultSet rs = clientInfo.executeQuery();
+
+            String clientName = rs.getString(1);
+            String clientSurname = rs.getString(2);
+            String clientHistory = rs.getString(3);
+
+            System.out.println("Welcome " + clientName + " " + clientSurname + "\n"
+                    + "Your client history is: " + clientHistory + "\n");
+
+            statement.close();
+            connection.close();
+            System.exit(0);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            System.out.println("The account has not been found.");
+        }
+
     }
 }
