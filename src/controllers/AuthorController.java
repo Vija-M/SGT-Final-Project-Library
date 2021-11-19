@@ -216,7 +216,8 @@ public class AuthorController {
             authorInfo = rs.getString("authorInfo");
             if (rs.next()) {
                 do {
-                    System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + "Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo);
+                    System.out.println(rs.getString(1)+","+rs.getString(2)+","+rs.getString(3)+","+rs.getString(4)+","+rs.getString(5));
+                    System.out.println("***************************");
                 } while (rs.next());
             } else {
                 System.out.println("Record Not Found...");
@@ -232,10 +233,9 @@ public class AuthorController {
 
 
     public static void execute() {
-        System.out.print("If you want to continue print: Y");
+        System.out.println("If you want to go back to menu print: y");
         String answer = scanner.next();
-        if (answer.equals("Y")) {
-            System.out.println("Welcome back to the menu for librarians!");
+        if (answer.equals("y")) {
             AuthorsMenu.menu();
         }
     }
