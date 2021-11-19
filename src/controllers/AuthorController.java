@@ -1,5 +1,9 @@
 package controllers;
 
+import com.sun.tools.javac.Main;
+import menu.MainMenu;
+import util.DBHelper;
+
 import menu.AuthorsMenu;
 import objects.Authors;
 
@@ -11,7 +15,6 @@ import java.util.Date;
 
 public class AuthorController {
     private static Scanner scanner = new Scanner(System.in);
-
     public static int addNewAuthor() {
         System.out.print("Enter the name of the author: ");
         String authorName = scanner.nextLine();
@@ -26,9 +29,7 @@ public class AuthorController {
         String authorInfo = scanner.nextLine();
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/37126/SQLITE3/Library.db");
-            Statement statement = connection.createStatement();
-
+            Statement statement = MainMenu.helper.getStatment();
             statement.execute(
                     "INSERT INTO Authors (authorName, dateOfBirth, dateOfDeath, authorInfo) " +
                             "VALUES( '" + authorName + "', '" + dateOfBirth + "' , '" + dateOfDeath + "' , '" + authorInfo + "');");
@@ -39,8 +40,6 @@ public class AuthorController {
             rs.next();
             int generatedID = rs.getInt("authorID");
 
-            statement.close();
-            connection.close();
             System.out.println("Successfully added new author " + authorName + "with ID:" + generatedID);
             return generatedID;
         } catch (SQLException throwables) {
