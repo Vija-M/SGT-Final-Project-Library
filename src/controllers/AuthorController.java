@@ -1,8 +1,6 @@
 package controllers;
 
-import com.sun.tools.javac.Main;
 import menu.MainMenu;
-import util.DBHelper;
 
 import menu.AuthorsMenu;
 import objects.Authors;
@@ -23,7 +21,7 @@ public class AuthorController {
         System.out.print("Enter author's date of birth (yyyy-MM-dd): ");
         String dateOfBirth = scanner.nextLine();
 
-        System.out.print("Enter author's date of death (dd/MM/yyyy, optional): ");
+        System.out.print("Enter author's date of death (yyyy-MM-dd, optional): ");
         String dateOfDeath = scanner.nextLine();
 
         System.out.print("Enter any additional information about author (optional): ");
@@ -54,14 +52,20 @@ public class AuthorController {
 
 
     public static boolean deleteAuthor() {
-
-        int id = findAuthorById().getAuthorID();
-
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the ID of the author: ");
+        int id = scanner.nextInt();
+        System.out.println("");
         try {
             Statement statement = MainMenu.helper.getStatment();
             statement.execute(
+                    "SELECT * FROM authors WHERE authorID =" + id);
+            ResultSet rs = statement.getResultSet();
+            String authorName = rs.getString("authorName");
+            System.out.println("Author name is " + authorName);
+            statement.execute(
                     "DELETE FROM authors WHERE authorID = " + id);
-            System.out.println("Author with id " + id + " is successfully removed from database");
+            System.out.println("An author " + authorName + " with id: " + id + " is successfully removed from database.");
             statement.close();
             AuthorController.execute();
             return true;
@@ -76,19 +80,35 @@ public class AuthorController {
     public static boolean updateAuthor() {
 
         Scanner scanner = new Scanner(System.in);
-        int id = findAuthorById().getAuthorID();
+        System.out.println("Enter the ID of the author: ");
+        int id = scanner.nextInt();
 
-        System.out.println("");
-        System.out.println("What information do you want to change?");
-        System.out.println("Please, print:  \n ---> 1 for NAME; \n ---> 2 for DATE OF BIRTH; \n ---> 3 for DATE OF BIRTH \n ---> 4 for INFORMATION");
-        int column = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("");
-        System.out.println("Enter new information: ");
-        String info = scanner.nextLine().trim();
         System.out.println("");
         try {
             Statement statement = MainMenu.helper.getStatment();
+            statement.execute(
+                    "SELECT * FROM authors WHERE authorID =" + id);
+
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            ResultSet rs = statement.getResultSet();
+
+            int authorID = rs.getInt("authorID");
+            String authorName = rs.getString("authorName");
+            Date dateOfBirth = formatter.parse(rs.getString("dateOfBirth"));
+            Date dateOfDeath = formatter.parse(rs.getString("dateOfDeath"));
+            String authorInfo = rs.getString("authorInfo");
+
+            System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + "Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo);
+
+            System.out.println("What information do you want to change?");
+            System.out.println("Please, print:  \n ---> 1 for NAME; \n ---> 2 for DATE OF BIRTH; \n ---> 3 for DATE OF BIRTH \n ---> 4 for INFORMATION");
+            int column = scanner.nextInt();
+            scanner.nextLine();
+            System.out.println("");
+            System.out.println("Enter new information: ");
+            String info = scanner.nextLine().trim();
+            System.out.println("");
+
 
             if (column == 1) {
                 statement.execute("UPDATE Authors SET authorName = \"" + info + "\" WHERE authorID = " + id + ";");
@@ -113,7 +133,7 @@ public class AuthorController {
             return true;
 
 
-        } catch (SQLException throwables) {
+        } catch (SQLException | ParseException throwables) {
             throwables.printStackTrace();
             return false;
         }
@@ -147,12 +167,12 @@ public class AuthorController {
                 authorInfo = rs.getString("authorInfo");
 
                 System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + "Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo);
-
+                AuthorController.execute();
             }
             return author;
         } catch (SQLException | ParseException throwables) {
             throwables.printStackTrace();
-            System.out.println("Failed to add new author. Try again.");
+            System.out.println("Didn't find an author. Try again.");
             return null;
         }
     }
@@ -192,7 +212,7 @@ public class AuthorController {
 
         } catch (SQLException | ParseException throwables) {
             throwables.printStackTrace();
-            System.out.println("Failed to add new author. Try again.");
+            System.out.println("Didn't find an author. Try again.");
             return null;
         }
     }
