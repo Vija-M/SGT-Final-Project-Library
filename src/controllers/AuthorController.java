@@ -41,7 +41,7 @@ public class AuthorController {
             rs.next();
             int generatedID = rs.getInt("authorID");
 
-            System.out.println("Successfully added new author " + authorName + "with ID:" + generatedID);
+            System.out.println("Successfully added new author " + authorName + " with ID: " + generatedID);
             statement.close();
             AuthorController.execute();
             return generatedID;
@@ -127,8 +127,7 @@ public class AuthorController {
         System.out.println("");
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/37126/SQLITE3/Library.db");
-            Statement statement = connection.createStatement();
+            Statement statement = MainMenu.helper.getStatment();
 
             statement.execute(
                     "SELECT * FROM authors WHERE authorID =" + id);
@@ -148,9 +147,7 @@ public class AuthorController {
                 authorInfo = rs.getString("authorInfo");
 
                 System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + "Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo);
-                statement.close();
-                connection.close();
-                AuthorController.execute();
+
             }
             return author;
         } catch (SQLException | ParseException throwables) {
@@ -167,8 +164,7 @@ public class AuthorController {
         System.out.println("");
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/37126/SQLITE3/Library.db");
-            Statement statement = connection.createStatement();
+            Statement statement = MainMenu.helper.getStatment();
 
             statement.execute(
                     "SELECT * FROM authors WHERE authorName = \"" + name + "\";");
@@ -189,10 +185,11 @@ public class AuthorController {
 
                 System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + "Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo);
                 statement.close();
-                connection.close();
-                AuthorController.execute();
+
             }
+            AuthorController.execute();
             return author;
+
         } catch (SQLException | ParseException throwables) {
             throwables.printStackTrace();
             System.out.println("Failed to add new author. Try again.");
@@ -227,7 +224,7 @@ public class AuthorController {
     }
 
     public static void execute() {
-        System.out.print("If you want to go back to menu print: y ------>  ");
+        System.out.print("\nIf you want to go back to menu print: y ------>  ");
         String answer = scanner.next();
         if (answer.equals("y")) {
             AuthorsMenu.menu();
