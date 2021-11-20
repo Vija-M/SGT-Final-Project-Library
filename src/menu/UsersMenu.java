@@ -27,7 +27,7 @@ public class UsersMenu {
                 //UserController.;
                 break;
             case 5:
-                //UserController.;
+                UserController.findUserByEmail();
                 break;
             case 6:
                 UserController.printAllUsers();
