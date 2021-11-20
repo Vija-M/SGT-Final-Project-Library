@@ -20,7 +20,7 @@ public class AuthorController {
         System.out.print("Enter the name of the author: ");
         String authorName = scanner.nextLine();
 
-        System.out.print("Enter author's date of birth (dd/MM/yyyy): ");
+        System.out.print("Enter author's date of birth (yyyy-MM-dd): ");
         String dateOfBirth = scanner.nextLine();
 
         System.out.print("Enter author's date of death (dd/MM/yyyy, optional): ");
@@ -216,7 +216,7 @@ public class AuthorController {
                 dateOfBirth = formatter.parse(rs.getString("dateOfBirth"));
                 dateOfDeath = formatter.parse(rs.getString("dateOfDeath"));
                 authorInfo = rs.getString("authorInfo");
-                System.out.println("Author id: " + authorID + ";\nName" + authorName + ";\nDate of birth" + dateOfBirth + ";\nDate of death" + dateOfDeath + ";\nInformation" + authorInfo + ";\n\n****************\n");
+                System.out.println("Author id: " + authorID + ";\nName: " + authorName + ";\nDate of birth: " + dateOfBirth + ";\nDate of death: " + dateOfDeath + ";\nInformation: " + authorInfo + ";\n\n*************************\n");
             }
             statement.close();
             AuthorController.execute();
@@ -227,7 +227,7 @@ public class AuthorController {
     }
 
     public static void execute() {
-        System.out.println("If you want to go back to menu print: y");
+        System.out.print("If you want to go back to menu print: y ------>  ");
         String answer = scanner.next();
         if (answer.equals("y")) {
             AuthorsMenu.menu();

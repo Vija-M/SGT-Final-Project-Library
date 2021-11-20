@@ -14,7 +14,7 @@ public class MainMenu {
     static Boolean running = true;
     public static DBHelper helper;
 
-    public void main(String[] args) {
+    public static void main(String[] args) {
         helper = new DBHelper();
         System.out.println("Welcome to the Library!");
 
