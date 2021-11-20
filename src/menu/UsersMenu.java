@@ -15,7 +15,7 @@ public class UsersMenu {
         int inputSelection = scanner.nextInt();
         switch (inputSelection) {
             case 1:
-                UserController.addNewUser();
+                //UserController.addNewUser();
                 break;
             case 2:
                 menu.UsersMenu.execute();
