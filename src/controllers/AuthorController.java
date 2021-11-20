@@ -41,6 +41,7 @@ public class AuthorController {
             int generatedID = rs.getInt("authorID");
 
             System.out.println("Successfully added new author " + authorName + "with ID:" + generatedID);
+            AuthorController.execute();
             return generatedID;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -63,7 +64,7 @@ public class AuthorController {
             System.out.println("Author with id " + id + " is successfully removed from database");
             statement.close();
             connection.close();
-
+            AuthorController.execute();
             return true;
 
         } catch (Exception e) {
@@ -109,7 +110,11 @@ public class AuthorController {
             }
 
             System.out.println("Successfully updated! Information added: " + info);
+            statement.close();
+            connection.close();
+            AuthorController.execute();
             return true;
+
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -148,6 +153,7 @@ public class AuthorController {
                 System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + "Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo);
                 statement.close();
                 connection.close();
+                AuthorController.execute();
             }
             return author;
         } catch (SQLException | ParseException throwables) {
@@ -195,7 +201,6 @@ public class AuthorController {
             System.out.println("Failed to add new author. Try again.");
             return null;
         }
-
     }
 
     public static String printAllAuthors() {
@@ -203,23 +208,19 @@ public class AuthorController {
             Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/37126/SQLITE3/Library.db");
             Statement statement = connection.createStatement();
             statement.execute("SELECT * FROM authors;");
-
             int authorID;
             String authorName, authorInfo;
             Date dateOfBirth, dateOfDeath;
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             ResultSet rs = statement.getResultSet();
-            authorID = rs.getInt("authorID");
-            authorName = rs.getString("authorName");
-            dateOfBirth = formatter.parse(rs.getString("dateOfBirth"));
-            dateOfDeath = formatter.parse(rs.getString("dateOfDeath"));
-            authorInfo = rs.getString("authorInfo");
-            if (rs.next()) {
-                do {
-                    System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + "Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo);
-                } while (rs.next());
-            } else {
-                System.out.println("Record Not Found...");
+
+            while (rs.next()) {
+                authorID = rs.getInt("authorID");
+                authorName = rs.getString("authorName");
+                dateOfBirth = formatter.parse(rs.getString("dateOfBirth"));
+                dateOfDeath = formatter.parse(rs.getString("dateOfDeath"));
+                authorInfo = rs.getString("authorInfo");
+                System.out.println("Author id: " + authorID + ";\nName" + authorName + ";\nDate of birth" + dateOfBirth + ";\nDate of death" + dateOfDeath + ";\nInformation" + authorInfo + ";\n\n****************\n");
             }
             statement.close();
             connection.close();
@@ -231,10 +232,9 @@ public class AuthorController {
     }
 
     public static void execute() {
-        System.out.print("If you want to continue print: Y");
+        System.out.println("If you want to go back to menu print: y");
         String answer = scanner.next();
-        if (answer.equals("Y")) {
-            System.out.println("Welcome back to the menu for librarians!");
+        if (answer.equals("y")) {
             AuthorsMenu.menu();
         }
     }
