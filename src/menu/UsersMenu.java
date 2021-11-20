@@ -1,12 +1,11 @@
 package menu;
 
-import controllers.AuthorController;
 import controllers.UserController;
 
 import java.util.Scanner;
 
 public class UsersMenu {
-    static void menu() {
+    public static void menu() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to the users' menu! Please, choose what do you want to do! ");
         System.out.println("1. Add user ->");
@@ -22,7 +21,7 @@ public class UsersMenu {
                 UserController.deleteUser();
                 break;
             case 3:
-               // UserController.;
+               UserController.updateUser();
                 break;
             case 4:
                 //UserController.;

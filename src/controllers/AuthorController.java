@@ -166,6 +166,7 @@ public class AuthorController {
                 authorInfo = rs.getString("authorInfo");
 
                 System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + "Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo);
+                AuthorController.execute();
             }
             return author;
         } catch (SQLException | ParseException throwables) {
@@ -202,6 +203,7 @@ public class AuthorController {
                 authorInfo = rs.getString("authorInfo");
 
                 System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + "Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo);
+                AuthorController.execute();
             }
 
             return author;
@@ -230,6 +232,7 @@ public class AuthorController {
                 dateOfDeath = formatter.parse(rs.getString("dateOfDeath"));
                 authorInfo = rs.getString("authorInfo");
                 System.out.println("Author id: " + authorID + ";\nName: " + authorName + ";\nDate of birth: " + dateOfBirth + ";\nDate of death: " + dateOfDeath + ";\nInformation: " + authorInfo + ";\n\n*************************\n");
+                AuthorController.execute();
             }
 
         } catch (SQLException | ParseException throwables) {
