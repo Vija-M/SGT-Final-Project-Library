@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class UserController {
     final private static Scanner scanner = new Scanner(System.in);
 
-    public static int addNewUser(Connection connection, Statement statement) {
+    public static int addNewUser() {
         System.out.print("Please, enter user's: ");
         System.out.print("first name: ");
         String userFirstName = scanner.nextLine();
@@ -32,7 +32,7 @@ public class UserController {
         String userHistory = scanner.nextLine();
 
         try {
-            statement = MainMenu.helper.getStatment();
+            Statement statement = MainMenu.helper.getStatment();
             statement.execute(
                     "INSERT INTO Users (userFirstName, userLastName, email, phone, birthDate, address, city, country, postalCode, userHistory) " +
                             "VALUES( '" + userFirstName + "', '" + userLastName + "' , '" + email + "' , '" + phone + "' , '" + birthDate + "' , '" + address +

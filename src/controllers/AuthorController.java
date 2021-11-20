@@ -14,7 +14,8 @@ import java.util.*;
 import java.util.Date;
 
 public class AuthorController {
-    private static Scanner scanner = new Scanner(System.in);
+    final private static Scanner scanner = new Scanner(System.in);
+
     public static int addNewAuthor() {
         System.out.print("Enter the name of the author: ");
         String authorName = scanner.nextLine();
@@ -41,6 +42,7 @@ public class AuthorController {
             int generatedID = rs.getInt("authorID");
 
             System.out.println("Successfully added new author " + authorName + "with ID:" + generatedID);
+            statement.close();
             AuthorController.execute();
             return generatedID;
         } catch (SQLException throwables) {
@@ -56,14 +58,11 @@ public class AuthorController {
         int id = findAuthorById().getAuthorID();
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/37126/SQLITE3/Library.db");
-            Statement statement = connection.createStatement();
-
+            Statement statement = MainMenu.helper.getStatment();
             statement.execute(
                     "DELETE FROM authors WHERE authorID = " + id);
             System.out.println("Author with id " + id + " is successfully removed from database");
             statement.close();
-            connection.close();
             AuthorController.execute();
             return true;
 
@@ -89,8 +88,7 @@ public class AuthorController {
         String info = scanner.nextLine().trim();
         System.out.println("");
         try {
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/37126/SQLITE3/Library.db");
-            Statement statement = connection.createStatement();
+            Statement statement = MainMenu.helper.getStatment();
 
             if (column == 1) {
                 statement.execute("UPDATE Authors SET authorName = \"" + info + "\" WHERE authorID = " + id + ";");
@@ -111,7 +109,6 @@ public class AuthorController {
 
             System.out.println("Successfully updated! Information added: " + info);
             statement.close();
-            connection.close();
             AuthorController.execute();
             return true;
 
@@ -205,8 +202,7 @@ public class AuthorController {
 
     public static String printAllAuthors() {
         try {
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:/Users/37126/SQLITE3/Library.db");
-            Statement statement = connection.createStatement();
+            Statement statement = MainMenu.helper.getStatment();
             statement.execute("SELECT * FROM authors;");
             int authorID;
             String authorName, authorInfo;
@@ -223,7 +219,6 @@ public class AuthorController {
                 System.out.println("Author id: " + authorID + ";\nName" + authorName + ";\nDate of birth" + dateOfBirth + ";\nDate of death" + dateOfDeath + ";\nInformation" + authorInfo + ";\n\n****************\n");
             }
             statement.close();
-            connection.close();
             AuthorController.execute();
         } catch (SQLException | ParseException throwables) {
             throwables.printStackTrace();
