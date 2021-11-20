@@ -31,6 +31,9 @@ public class Users {
         this.setUserHistory(userHistory);
     }
 
+    public Users() {
+    }
+
     public Users(int userID, String userFirstName, String userLastName) {
         this.userID = userID;
         this.userFirstName = userFirstName;

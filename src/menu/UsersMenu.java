@@ -30,7 +30,7 @@ public class UsersMenu {
                 //UserController.;
                 break;
             case 6:
-               // UserController.;
+                UserController.printAllUsers();
                 break;
             case 7:
                 menu.UsersMenu.execute();
