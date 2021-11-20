@@ -53,4 +53,28 @@ public class UserController {
             return -1;
         }
     }
+
+
+    public static boolean deleteUser() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the ID of the user: ");
+        int id = scanner.nextInt();
+        System.out.println("");
+        try {
+            Statement statement = MainMenu.helper.getStatment();
+            statement.execute(
+                    "SELECT * FROM users WHERE userID =" + id);
+            ResultSet rs = statement.getResultSet();
+            String userFirstName = rs.getNString("userFirstName");
+            String userLastName = rs.getString("userLastName");
+            statement.execute(
+                    "DELETE FROM users WHERE userID = " + id);
+            System.out.println("A user " + userFirstName + userLastName + " with id: " + id + " is successfully removed from database.");
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

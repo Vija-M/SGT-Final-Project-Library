@@ -66,7 +66,6 @@ public class AuthorController {
             statement.execute(
                     "DELETE FROM authors WHERE authorID = " + id);
             System.out.println("An author " + authorName + " with id: " + id + " is successfully removed from database.");
-            statement.close();
             AuthorController.execute();
             return true;
 
@@ -128,7 +127,7 @@ public class AuthorController {
             }
 
             System.out.println("Successfully updated! Information added: " + info);
-            statement.close();
+
             AuthorController.execute();
             return true;
 
@@ -167,7 +166,6 @@ public class AuthorController {
                 authorInfo = rs.getString("authorInfo");
 
                 System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + "Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo);
-                AuthorController.execute();
             }
             return author;
         } catch (SQLException | ParseException throwables) {
@@ -204,10 +202,8 @@ public class AuthorController {
                 authorInfo = rs.getString("authorInfo");
 
                 System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + "Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo);
-                statement.close();
-
             }
-            AuthorController.execute();
+
             return author;
 
         } catch (SQLException | ParseException throwables) {
@@ -235,8 +231,7 @@ public class AuthorController {
                 authorInfo = rs.getString("authorInfo");
                 System.out.println("Author id: " + authorID + ";\nName: " + authorName + ";\nDate of birth: " + dateOfBirth + ";\nDate of death: " + dateOfDeath + ";\nInformation: " + authorInfo + ";\n\n*************************\n");
             }
-            statement.close();
-            AuthorController.execute();
+
         } catch (SQLException | ParseException throwables) {
             throwables.printStackTrace();
         }

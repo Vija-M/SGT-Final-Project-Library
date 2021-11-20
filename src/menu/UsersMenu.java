@@ -1,5 +1,6 @@
 package menu;
 
+import controllers.AuthorController;
 import controllers.UserController;
 
 import java.util.Scanner;
@@ -18,6 +19,21 @@ public class UsersMenu {
                 UserController.addNewUser();
                 break;
             case 2:
+                UserController.deleteUser();
+                break;
+            case 3:
+               // UserController.;
+                break;
+            case 4:
+                //UserController.;
+                break;
+            case 5:
+                //UserController.;
+                break;
+            case 6:
+               // UserController.;
+                break;
+            case 7:
                 menu.UsersMenu.execute();
                 break;
             case 0:
