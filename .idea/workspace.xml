@@ -1,28 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ccca81e-e042-4927-a58c-1e7d2c11c038" name="Default Changelist" comment="Books class added, Books controller added, fixes for all controllers, some minor overall fixes">
-      <change afterPath="$PROJECT_DIR$/src/menu/UsersMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/objects/Orders.java" afterDir="false" />
+    <list default="true" id="95c5f003-287b-45e4-b251-77eec8cccf51" name="Changes" comment="Grammar fixed in AuthorController">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/controllers/AuthorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/controllers/AuthorController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/controllers/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/menu/AuthorsMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/menu/AuthorsMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/menu/Collection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/menu/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/menu/MainMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/menu/PrintMenu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/objects/Authors.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/objects/Books.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/objects/Books.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/objects/RolesAndAccess.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/objects/UserAccess.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/objects/Users.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/util/Color.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/library.db" beforeDir="false" afterPath="$PROJECT_DIR$/sql/Library.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/AuthorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/AuthorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/menu/AuthorsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/AuthorsMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/menu/Collection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/LibraryCollection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/menu/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/objects/Authors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/Authors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menu/PrintMenu.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -386,7 +368,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637181380627</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Grammar fixed in AuthorController">
+      <created>1637500888254</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1637500888254</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -412,6 +401,7 @@
     <MESSAGE value="Ance's commit" />
     <MESSAGE value="Books class, Books controller, fixes for all controllers" />
     <MESSAGE value="Books class added, Books controller added, fixes for all controllers, some minor overall fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Books class added, Books controller added, fixes for all controllers, some minor overall fixes" />
+    <MESSAGE value="Grammar fixed in AuthorController" />
+    <option name="LAST_COMMIT_MESSAGE" value="Grammar fixed in AuthorController" />
   </component>
 </project>
