@@ -41,8 +41,8 @@ public class AuthorController {
 
             System.out.println("Successfully added new author " + authorName + " with ID: " + generatedID);
             statement.close();
-            AuthorController.execute();
             return generatedID;
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
             System.out.println("Failed to add new author. Try again.");
@@ -66,7 +66,6 @@ public class AuthorController {
             statement.execute(
                     "DELETE FROM authors WHERE authorID = " + id);
             System.out.println("An author " + authorName + " with id: " + id + " is successfully removed from database.");
-            AuthorController.execute();
             return true;
 
         } catch (Exception e) {
@@ -127,10 +126,7 @@ public class AuthorController {
             }
 
             System.out.println("Successfully updated! Information added: " + info);
-
-            AuthorController.execute();
             return true;
-
 
         } catch (SQLException | ParseException throwables) {
             throwables.printStackTrace();
@@ -166,7 +162,6 @@ public class AuthorController {
                 authorInfo = rs.getString("authorInfo");
 
                 System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + "Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo);
-                AuthorController.execute();
             }
             return author;
         } catch (SQLException | ParseException throwables) {
@@ -203,9 +198,7 @@ public class AuthorController {
                 authorInfo = rs.getString("authorInfo");
 
                 System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + "Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo);
-                AuthorController.execute();
             }
-
             return author;
 
         } catch (SQLException | ParseException throwables) {
@@ -232,7 +225,6 @@ public class AuthorController {
                 dateOfDeath = formatter.parse(rs.getString("dateOfDeath"));
                 authorInfo = rs.getString("authorInfo");
                 System.out.println("Author id: " + authorID + ";\nName: " + authorName + ";\nDate of birth: " + dateOfBirth + ";\nDate of death: " + dateOfDeath + ";\nInformation: " + authorInfo + ";\n\n*************************\n");
-                AuthorController.execute();
             }
 
         } catch (SQLException | ParseException throwables) {
