@@ -203,7 +203,7 @@ public class MainMenu {
 
         switch (inputSelection) {
             case 1:
-                //         BooksMenu.printMenu();
+                BooksMenu.menu();
                 break;
             case 2:
                 AuthorsMenu.menu();
