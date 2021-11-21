@@ -15,7 +15,8 @@ public class DBHelper {
             connection = DriverManager.getConnection(
                     // !!! Change to your db location !!!//
                     "jdbc:sqlite:/Users/Everita/IdeaProjects/SGT-Final-Project-Library/sql/library.db");
-                   //Vija -  "jdbc:sqlite:/Users/37126/SQLITE3/Library.db");
+                    // Vija -  "jdbc:sqlite:/Users/37126/SQLITE3/Library.db");
+                    // Ance - "jdbc:sqlite:F:/javaProjects/SGT-Final-Project-Library/sql/Library.db"
             statement = connection.createStatement();
         } catch (
                 SQLException exception) {
