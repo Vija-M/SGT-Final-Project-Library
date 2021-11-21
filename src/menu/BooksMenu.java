@@ -17,7 +17,7 @@ public class BooksMenu {
         System.out.println("4. Find a book by title ->");
         System.out.println("5. Update any information about book by ID ->");
         System.out.println("6. Print all books ->");
-        System.out.println("7. Choose that for to return in MAIN MENU:");//return in main menu(RestaurantProgramList -> mainAction)
+        System.out.println("7. Choose that for to return in MAIN MENU for librarians:");//return in main menu(RestaurantProgramList -> mainAction)
         System.out.println("0. Exit!");
         System.out.println();
         int inputSelection = scanner.nextInt();
