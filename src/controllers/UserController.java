@@ -1,9 +1,7 @@
 package controllers;
 
-
 import menu.MainMenu;
 import menu.UsersMenu;
-import objects.Authors;
 import objects.Users;
 
 import java.sql.*;
@@ -52,7 +50,6 @@ public class UserController {
             int generatedID = rs.getInt("userID");
 
             System.out.println("Successfully added new user " + userFirstName + userLastName + "with ID:" + generatedID);
-            UserController.execute();
             return generatedID;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -78,7 +75,6 @@ public class UserController {
             statement.execute(
                     "DELETE FROM users WHERE userID = " + id);
             System.out.println("A user " + userFirstName + userLastName + " with id: " + id + " is successfully removed from database.");
-            UserController.execute();
             return true;
 
         } catch (Exception e) {
@@ -164,12 +160,8 @@ public class UserController {
             } else {
                 System.out.println("Update failed. Please check data and try again.");
             }
-
             System.out.println("Successfully updated! Information added: " + info);
-
-            UserController.execute();
             return true;
-
 
         } catch (SQLException | ParseException throwables) {
             throwables.printStackTrace();
@@ -212,7 +204,6 @@ public class UserController {
                 System.out.println("User ID: " + userID + "\n" + "Name: " + userFirstName + "\n" + "Family name: " + userLastName + "\n" + "E-mail: " + email +
                         "\n" + "Phone: " + phone + "\n" + "Date of birth: " + birthDate + "\n" + "Address: " + address + "\n" + "City: " + city + "\n" +
                         "Country: " + country + "\n" + "PostalCode: " + postalCode + "\n" + "User history: " + userHistory);
-                UserController.execute();
             }
 
             return user;
@@ -245,8 +236,7 @@ public class UserController {
                 String userHistory = rs.getString("userHistory");
                 System.out.println("User ID: " + userID + "\n" + "Name: " + userFirstName + "\n" + "Family name: " + userLastName + "\n" + "E-mail: " + email +
                         "\n" + "Phone: " + phone + "\n" + "Date of birth: " + birthDate + "\n" + "Address: " + address + "\n" + "City: " + city + "\n" +
-                        "Country: " + country + "\n" + "PostalCode: " + postalCode + "\n" + "User history: " + userHistory);
-                UserController.execute();
+                        "Country: " + country + "\n" + "PostalCode: " + postalCode + "\n" + "User history: " + userHistory + ";\n\n*************************\n");
             }
 
         } catch (SQLException | ParseException throwables) {
