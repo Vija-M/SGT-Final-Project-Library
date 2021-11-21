@@ -9,7 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
-
+//Vija - "jdbc:sqlite:/Users/37126/SQLITE3/Library.db"
 public class UserController {
     final private static Scanner scanner = new Scanner(System.in);
 
@@ -23,7 +23,7 @@ public class UserController {
         String email = scanner.nextLine();
         System.out.print("phone number: ");
         String phone = scanner.nextLine();
-        System.out.print("date of birth (dd/MM/yyyy): ");
+        System.out.print("date of birth (yyyy-MM-dd): ");
         String birthDate = scanner.nextLine();
         System.out.print("address: ");
         String address = scanner.nextLine();
