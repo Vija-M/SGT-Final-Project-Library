@@ -48,6 +48,7 @@ public class AuthorsMenu {
             default:
                 System.out.println("Did not recognize this selection, please try again!");
         }
+        AuthorController.execute();
     }
 
 

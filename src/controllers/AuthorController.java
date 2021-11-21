@@ -15,7 +15,7 @@ public class AuthorController {
     final private static Scanner scanner = new Scanner(System.in);
 
     public static int addNewAuthor() {
-        System.out.print("Enter the name of an author: ");
+        System.out.print("Enter the name of the author: ");
         String authorName = scanner.nextLine();
 
         System.out.print("Enter author's date of birth (yyyy-MM-dd): ");
@@ -24,7 +24,7 @@ public class AuthorController {
         System.out.print("Enter author's date of death (yyyy-MM-dd, optional): ");
         String dateOfDeath = scanner.nextLine();
 
-        System.out.print("Enter any additional information about the author (optional): ");
+        System.out.print("Enter any additional information about author (optional): ");
         String authorInfo = scanner.nextLine();
 
         try {
@@ -39,13 +39,13 @@ public class AuthorController {
             rs.next();
             int generatedID = rs.getInt("authorID");
 
-            System.out.println("Successfully added the new author " + authorName + " with ID: " + generatedID);
+            System.out.println("Successfully added new author " + authorName + " with ID: " + generatedID);
             statement.close();
-            AuthorController.execute();
             return generatedID;
+
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            System.out.println("Failed to add a new author. Try again.");
+            System.out.println("Failed to add new author. Try again.");
             return -1;
         }
     }
@@ -65,8 +65,7 @@ public class AuthorController {
             System.out.println("Author name is " + authorName);
             statement.execute(
                     "DELETE FROM authors WHERE authorID = " + id);
-            System.out.println("An author " + authorName + " with id: " + id + " has been successfully removed from the database.");
-            AuthorController.execute();
+            System.out.println("An author " + authorName + " with id: " + id + " is successfully removed from database.");
             return true;
 
         } catch (Exception e) {
@@ -127,10 +126,7 @@ public class AuthorController {
             }
 
             System.out.println("Successfully updated! Information added: " + info);
-
-            AuthorController.execute();
             return true;
-
 
         } catch (SQLException | ParseException throwables) {
             throwables.printStackTrace();
@@ -166,7 +162,6 @@ public class AuthorController {
                 authorInfo = rs.getString("authorInfo");
 
                 System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + "Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo);
-                AuthorController.execute();
             }
             return author;
         } catch (SQLException | ParseException throwables) {
@@ -203,9 +198,7 @@ public class AuthorController {
                 authorInfo = rs.getString("authorInfo");
 
                 System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + "Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo);
-                AuthorController.execute();
             }
-
             return author;
 
         } catch (SQLException | ParseException throwables) {
@@ -232,7 +225,6 @@ public class AuthorController {
                 dateOfDeath = formatter.parse(rs.getString("dateOfDeath"));
                 authorInfo = rs.getString("authorInfo");
                 System.out.println("Author id: " + authorID + ";\nName: " + authorName + ";\nDate of birth: " + dateOfBirth + ";\nDate of death: " + dateOfDeath + ";\nInformation: " + authorInfo + ";\n\n*************************\n");
-                AuthorController.execute();
             }
 
         } catch (SQLException | ParseException throwables) {
