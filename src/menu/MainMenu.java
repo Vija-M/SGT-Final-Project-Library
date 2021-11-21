@@ -114,7 +114,7 @@ public class MainMenu {
 
             PreparedStatement bookInformation = connection.prepareStatement("SELECT  Books.title, Books.authorID, Books.yearPublished, Books.publisher, Books.edition, Books.orderID, Authors.authorName FROM Books INNER JOIN Authors ON Books.authorID = Authors.authorID WHERE Books.title = " + "'" + title + "';");
             ResultSet rs = bookInformation.executeQuery();
-            ;
+
 
             if (rs.getInt("orderID") != 1) {
                 System.out.println("Your book '" + rs.getString("title") + "', the " + rs.getString("edition") + " edition, written by " + rs.getString("authorName") + "\n"
@@ -139,54 +139,37 @@ public class MainMenu {
     }
 
     private static void returnBook() {
-        int yearPublished;
-        String author, title, isbn, publisher;
+        System.out.println("Please, enter the title of the book you are returning.");
+        String title = scan.nextLine();
+        int orderID = 1;
 
-        System.out.println("Please, enter the author of the book: " + "\n");
-        author = scan.next();
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:F:/javaProjects/SGT-Final-Project-Library/sql/Library.db");
+            Statement statement = connection.createStatement();
+            statement.execute("SELECT Books.title, Books.authorID, Books.yearPublished, Books.publisher, Books.edition, Books.orderID, Authors.authorName FROM Books INNER JOIN Authors ON Books.authorID = Authors.authorID WHERE Books.title = " + "'" + title + "';");
+            ResultSet rs = statement.getResultSet();
 
-        System.out.println("Enter the title of the book: " + "\n");
-        title = scan.next();
+            statement.execute("UPDATE Books.orderID = \"" + orderID + "\" WHERE Books.title = " + "'" + title + "';");
 
-        System.out.println("What year has it been published?" + "\n");
-        yearPublished = scan.nextInt();
+                System.out.println("You've just returned a book by " + rs.getString("authorName") + " titled " + rs.getString("title") + "\n"
+                        + "Thank you for using the library." + "\n");
 
-        System.out.println("Please, enter the book's isbn" + "\n");
-        isbn = scan.next();
+            statement.close();
+            connection.close();
+            System.exit(0);
 
-        System.out.println("Enter the publisher. " + "\n");
-        publisher = scan.next();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            System.out.println("Your attempt to return the book has failed.");
 
-        // Creating a book object for this new book...
-        // Books newBookAdded = new Books(author, title, yearPublished, isbn, publisher);
-
-        // ...and adding it to the library.
-        // collection.addBook(newBookAdded);
+            System.exit(0);
+        }
     }
 
 
     private static void saveAndQuit() {
         System.out.println("Enter file name: ");
-        fileName = scan.next();
-        running = false;
 
-        FileOutputStream fos = null;
-        ObjectOutputStream out = null;
-
-        try {
-
-            fos = new FileOutputStream(fileName);
-            out = new ObjectOutputStream(fos);
-
-            out.writeObject(collection);
-            fos.close();
-            out.close();
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     static void librarianMenu() {
