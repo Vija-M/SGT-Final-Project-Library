@@ -251,6 +251,8 @@ public class UserController {
         String answer = scanner.next();
         if (answer.equals("y")) {
             UsersMenu.menu();
+        } else {
+            MainMenu.librarianMenu();
         }
     }
 }

@@ -1,10 +1,7 @@
 package menu;
 
 import controllers.AuthorController;
-import util.DBHelper;
 
-import java.beans.Statement;
-import java.sql.Connection;
 import java.util.Scanner;
 
 public class AuthorsMenu {
