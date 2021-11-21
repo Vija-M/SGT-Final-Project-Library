@@ -14,7 +14,7 @@ public class UsersMenu {
         System.out.println("4. Find user by ID ->");
         System.out.println("5. Find user by e-mail ->");
         System.out.println("6. Print a list of all users ->");
-        System.out.println("7. Choose that return in MAIN MENU:");//return in main menu(RestaurantProgramList -> mainAction)
+        System.out.println("7. Choose that return in MAIN MENU for librarians:");//return in main menu(RestaurantProgramList -> mainAction)
         System.out.println("0. Exit!");
         System.out.println();
         int inputSelection = scanner.nextInt();

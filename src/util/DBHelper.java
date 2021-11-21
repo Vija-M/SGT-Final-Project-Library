@@ -14,7 +14,7 @@ public class DBHelper {
         try {
             connection = DriverManager.getConnection(
                     // !!! Change to your db location !!!//
-                    "jdbc:sqlite:/Users/Everita/IdeaProjects/SGT-Final-Project-Library/sql/library.db");
+                    "jdbc:sqlite:/Users/37126/SQLITE3/Library.db");
             statement = connection.createStatement();
         } catch (
                 SQLException exception) {
