@@ -189,7 +189,7 @@ public class MainMenu {
         }
     }
 
-    static void librarianMenu() {
+    public static void librarianMenu() {
         System.out.println("Welcome to the internal system of Rustic Library!");
         System.out.println("Please, choose one of the options below.");
         System.out.println();

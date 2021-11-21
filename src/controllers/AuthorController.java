@@ -238,6 +238,8 @@ public class AuthorController {
         String answer = scanner.next();
         if (answer.equals("y")) {
             AuthorsMenu.menu();
+        } else {
+            MainMenu.librarianMenu();
         }
     }
 }
