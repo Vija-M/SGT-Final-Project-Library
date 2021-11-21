@@ -1,5 +1,6 @@
 package menu;
 
+import controllers.AuthorController;
 import objects.Books;
 import util.DBHelper;
 
@@ -33,7 +34,9 @@ public class MainMenu {
             System.out.println("Enter 0 for entering your library account." + "\n"
                     + "Enter 1 to search for a book." + "\n"
                     + "Enter 2 to return a book" + "\n"
-                    + "Enter 3 to save and quit.");
+                    + "Enter 3 to find an author by name" + "\n"
+                    + "Enter 4 to print a list of all authors" + "\n"
+                    + "Enter 5 to save and quit.");
 
             int clientResponse = scan.nextInt();
 
@@ -53,6 +56,14 @@ public class MainMenu {
                     break;
 
                 case 3:
+                    AuthorController.findAuthorByName();
+                    break;
+
+                case 4:
+                    AuthorController.printAllAuthors();
+                    break;
+
+                case 5:
                     MainMenu.saveAndQuit();
                     break;
 
