@@ -99,7 +99,7 @@ public class AuthorController {
             System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + "Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo);
 
             System.out.println("What information do you want to change?");
-            System.out.println("Please, print:  \n ---> 1 for NAME; \n ---> 2 for DATE OF BIRTH; \n ---> 3 for DATE OF BIRTH \n ---> 4 for INFORMATION");
+            System.out.println("Please, print:  \n ---> 1 for NAME; \n ---> 2 for DATE OF BIRTH (yyyy-MM-dd); \n ---> 3 for DATE OF DEATH (yyyy-MM-dd) \n ---> 4 for INFORMATION");
             int column = scanner.nextInt();
             scanner.nextLine();
             System.out.println("");
@@ -112,11 +112,9 @@ public class AuthorController {
                 statement.execute("UPDATE Authors SET authorName = \"" + info + "\" WHERE authorID = " + id + ";");
 
             } else if (column == 2) {
-                System.out.println("Use date format: yyyy-MM-dd");
                 statement.execute("UPDATE Authors SET dateOfBirth = \"" + info + "\" WHERE authorID = " + id + ";");
 
             } else if (column == 3) {
-                System.out.println("Use date format: yyyy-MM-dd");
                 statement.execute("UPDATE Authors SET dateOfDeath = \"" + info + "\" WHERE authorID = " + id + ";");
 
             } else if (column == 4) {
@@ -238,6 +236,8 @@ public class AuthorController {
         String answer = scanner.next();
         if (answer.equals("y")) {
             AuthorsMenu.menu();
+        } else {
+            MainMenu.librarianMenu();
         }
     }
 }

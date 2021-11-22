@@ -1,10 +1,7 @@
 package menu;
 
 import controllers.AuthorController;
-import objects.Books;
 import util.DBHelper;
-
-import java.io.*;
 import java.sql.*;
 import java.util.Scanner;
 
@@ -78,12 +75,10 @@ public class MainMenu {
         int userID = scan.nextInt();
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:F:/javaProjects/SGT-Final-Project-Library/sql/Library.db");
-            Statement statement = connection.createStatement();
+            Statement statement = helper.getStatment();
             statement.execute("SELECT * FROM Users WHERE userID = " + userID + ";");
 
-            PreparedStatement clientInfo = connection.prepareStatement("SELECT userFirstName, userLastName, userHistory FROM Users WHERE userID = " + userID + ";");
-
+            PreparedStatement clientInfo = helper.connection.prepareStatement("SELECT userFirstName, userLastName, userHistory FROM Users WHERE userID = " + userID + ";");
             ResultSet rs = clientInfo.executeQuery();
 
             String clientName = rs.getString(1);
@@ -93,8 +88,6 @@ public class MainMenu {
             System.out.println("Welcome " + clientName + " " + clientSurname + "\n"
                     + "Your client history is: " + clientHistory + "\n");
 
-            statement.close();
-            connection.close();
             System.exit(0);
 
         } catch (SQLException throwables) {
@@ -109,10 +102,7 @@ public class MainMenu {
         String title = scan.nextLine();
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:F:/javaProjects/SGT-Final-Project-Library/sql/Library.db");
-            Statement statement = connection.createStatement();
-
-            PreparedStatement bookInformation = connection.prepareStatement("SELECT  Books.title, Books.authorID, Books.yearPublished, Books.publisher, Books.edition, Books.orderID, Authors.authorName FROM Books INNER JOIN Authors ON Books.authorID = Authors.authorID WHERE Books.title = " + "'" + title + "';");
+            PreparedStatement bookInformation = helper.connection.prepareStatement("SELECT  Books.title, Books.authorID, Books.yearPublished, Books.publisher, Books.edition, Books.orderID, Authors.authorName FROM Books INNER JOIN Authors ON Books.authorID = Authors.authorID WHERE Books.title = " + "'" + title + "';");
             ResultSet rs = bookInformation.executeQuery();
 
 
@@ -125,16 +115,13 @@ public class MainMenu {
                         + "(published in: " + rs.getInt("yearPublished") + " by " + rs.getString("publisher") + ") " + "\n"
                         + " is unavailable.");
             }
-
-            statement.close();
-            connection.close();
-            System.exit(0);
+            System.exit(0);  // EV - do we need  it here? Mby we could add an option to return to menu or smth?
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
             System.out.println("The book with this title has not been found.");
 
-            System.exit(0);
+            System.exit(0);    // EV - do we need  it here? Mby we could add an option to return to menu or smth?
         }
     }
 
@@ -144,8 +131,8 @@ public class MainMenu {
         int orderID = 1;
 
         try {
-            Connection connection = DriverManager.getConnection("jdbc:sqlite:F:/javaProjects/SGT-Final-Project-Library/sql/Library.db");
-            Statement statement = connection.createStatement();
+            Statement statement = helper.getStatment();
+
             statement.execute("SELECT Books.title, Books.authorID, Books.yearPublished, Books.publisher, Books.edition, Books.orderID, Authors.authorName FROM Books INNER JOIN Authors ON Books.authorID = Authors.authorID WHERE Books.title = " + "'" + title + "';");
             ResultSet rs = statement.getResultSet();
 
@@ -154,8 +141,6 @@ public class MainMenu {
                 System.out.println("You've just returned a book by " + rs.getString("authorName") + " titled " + rs.getString("title") + "\n"
                         + "Thank you for using the library." + "\n");
 
-            statement.close();
-            connection.close();
             System.exit(0);
 
         } catch (SQLException throwables) {
@@ -172,13 +157,14 @@ public class MainMenu {
 
     }
 
-    static void librarianMenu() {
+    public static void librarianMenu() {
         System.out.println("Welcome to the internal system of Rustic Library!");
         System.out.println("Please, choose one of the options below.");
         System.out.println();
         System.out.println("1--> choose action with BOOKS: ");
         System.out.println("2--> choose action with AUTHORS: ");
-        System.out.println("3--> choose action with restaurant USERS: ");
+        System.out.println("3--> choose action with library USERS: ");
+        System.out.println("4--> choose action with library ORDERS: ");
         System.out.println("0--> EXIT! ");
         System.out.println();
 
@@ -186,13 +172,16 @@ public class MainMenu {
 
         switch (inputSelection) {
             case 1:
-                //         BooksMenu.printMenu();
+                BooksMenu.menu();
                 break;
             case 2:
                 AuthorsMenu.menu();
                 break;
             case 3:
                 UsersMenu.menu();
+                break;
+            case 4:
+                OrdersMenu.menu();
                 break;
             case 0:
                 return;

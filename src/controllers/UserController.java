@@ -9,7 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
-
+//Vija - "jdbc:sqlite:/Users/37126/SQLITE3/Library.db"
 public class UserController {
     final private static Scanner scanner = new Scanner(System.in);
 
@@ -23,7 +23,7 @@ public class UserController {
         String email = scanner.nextLine();
         System.out.print("phone number: ");
         String phone = scanner.nextLine();
-        System.out.print("date of birth (dd/MM/yyyy): ");
+        System.out.print("date of birth (yyyy-MM-dd): ");
         String birthDate = scanner.nextLine();
         System.out.print("address: ");
         String address = scanner.nextLine();
@@ -70,7 +70,7 @@ public class UserController {
             statement.execute(
                     "SELECT * FROM users WHERE userID =" + id);
             ResultSet rs = statement.getResultSet();
-            String userFirstName = rs.getNString("userFirstName");
+            String userFirstName = rs.getString("userFirstName");
             String userLastName = rs.getString("userLastName");
             statement.execute(
                     "DELETE FROM users WHERE userID = " + id);
@@ -115,7 +115,7 @@ public class UserController {
                     "Country: " + country + "\n" + "PostalCode: " + postalCode + "\n" + "User history: " + userHistory);
 
             System.out.println("What information do you want to change?");
-            System.out.println("Please, print:  \n ---> 1 for NAME; \n ---> 2 for FAMILY NAME; \n ---> 3 for E-MAIL; \n ---> 4 for PHONE Nr.; \n ---> 5 for DATE OF BIRTH;" +
+            System.out.println("Please, print:  \n ---> 1 for NAME; \n ---> 2 for FAMILY NAME; \n ---> 3 for E-MAIL; \n ---> 4 for PHONE Nr.; \n ---> 5 for DATE OF BIRTH (yyyy-MM-dd);" +
                     " \n ---> 6 for ADDRESS; \n ---> 7 for CITY; \n ---> 8 for COUNTRY; \n ---> 9 for POSTAL CODE; \n ---> 10 for INFORMATION");
             int column = scanner.nextInt();
             scanner.nextLine();
@@ -138,14 +138,12 @@ public class UserController {
                 statement.execute("UPDATE Users SET phone = \"" + info + "\" WHERE userID = " + id + ";");
 
             } else if (column == 5) {
-                System.out.println("Use date format: yyyy-MM-dd");
-                statement.execute("UPDATE Users SET birthDate = \"" + info + "\" WHERE userID = " + id + ";");
+              statement.execute("UPDATE Users SET birthDate = \"" + info + "\" WHERE userID = " + id + ";");
 
             } else if (column == 6) {
                 statement.execute("UPDATE Users SET address = \"" + info + "\" WHERE userID = " + id + ";");
 
             } else if (column == 7) {
-
                 statement.execute("UPDATE Authors SET city = \"" + info + "\" WHERE authorID = " + id + ";");
 
             } else if (column == 8) {
@@ -251,6 +249,8 @@ public class UserController {
         String answer = scanner.next();
         if (answer.equals("y")) {
             UsersMenu.menu();
+        } else {
+            MainMenu.librarianMenu();
         }
     }
 }

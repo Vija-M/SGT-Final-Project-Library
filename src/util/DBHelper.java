@@ -7,14 +7,16 @@ import java.sql.Statement;
 
 public class DBHelper {
 
-    private Statement statement;
-    private Connection connection;
+    public Statement statement;
+    public Connection connection;
 
     public DBHelper() {
         try {
             connection = DriverManager.getConnection(
-                    // !!! Change to your db location !!!//
+                    // !!! CHANGE TO YOUR DB LOCATION !!!//
                     "jdbc:sqlite:/Users/Everita/IdeaProjects/SGT-Final-Project-Library/sql/library.db");
+                    // Vija -  "jdbc:sqlite:/Users/37126/SQLITE3/Library.db");
+                    // Ance - "jdbc:sqlite:F:/javaProjects/SGT-Final-Project-Library/sql/Library.db"
             statement = connection.createStatement();
         } catch (
                 SQLException exception) {

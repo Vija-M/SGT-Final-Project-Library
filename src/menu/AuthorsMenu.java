@@ -1,10 +1,7 @@
 package menu;
 
 import controllers.AuthorController;
-import util.DBHelper;
 
-import java.beans.Statement;
-import java.sql.Connection;
 import java.util.Scanner;
 
 public class AuthorsMenu {
@@ -17,7 +14,7 @@ public class AuthorsMenu {
         System.out.println("4. Find author by name ->");
         System.out.println("5. Update any information about author by ID ->");
         System.out.println("6. Print all authors ->");
-        System.out.println("7. Choose that for to return in MAIN MENU:");//return in main menu(RestaurantProgramList -> mainAction)
+        System.out.println("7. Choose that for to return in MAIN MENU for librarians:");//return in main menu(RestaurantProgramList -> mainAction)
         System.out.println("0. Exit!");
         System.out.println();
         int inputSelection = scanner.nextInt();
