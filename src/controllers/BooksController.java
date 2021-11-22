@@ -16,17 +16,20 @@ public class BooksController {
         System.out.print("Enter 13 digit ISBN number of the book: ");
         String isbn = scanner.nextLine();
 
-        System.out.print("Enter author ID: ");
-        String authorID = scanner.nextLine();
+        System.out.print("Enter authors ID: ");
+        int authorID = scanner.nextInt();
+        scanner.nextLine();
 
         System.out.print("Enter the year the book was published (yyyy): ");
-        String yearPublished = scanner.nextLine();
+        int yearPublished = scanner.nextInt();
+        scanner.nextLine();
 
         System.out.print("Enter the language if book is not written in English: ");
         String language = scanner.nextLine();
 
         System.out.print("Enter the number of pages: ");
-        String pages = scanner.nextLine();
+        int pages = scanner.nextInt();
+        scanner.nextLine();
 
         System.out.print("Enter the genre of the book (optional): ");
         String genre = scanner.nextLine();
@@ -39,21 +42,22 @@ public class BooksController {
 
         System.out.print("Is book a hardcover (true / false): "); //TODO - return to this and check how this connects to constructor / database
         boolean hasHardCover = scanner.nextBoolean();
+        scanner.nextLine();
 
         System.out.print("Information about the book: ");
         String information = scanner.nextLine();
 
         System.out.print("Enter the clientID (optional) : ");
-        String clientID = scanner.nextLine();
+        int clientID = scanner.nextInt();
 
         System.out.print("Enter the orderID (optional) : ");
-        String orderID = scanner.nextLine();
+        int orderID = scanner.nextInt();
 
         try {
             Statement statement = MainMenu.helper.getStatment();
             statement.execute(
                     "INSERT INTO Books (title, isbn, authorID, yearPublished, language, pages, genre, publisher, edition,  hasHardCover, information, clientID, orderID) " +
-                            "VALUES( '" + title + "', '" + isbn + "' , '" + authorID + "' , '" + yearPublished + "', '" + language + "' , '" + pages + "' , '" + genre + "', '" + publisher + "' , '" + edition + "' , '" + hasHardCover + "' , '" + information + "', '" + clientID + "' , '" + orderID + "');");
+                            "VALUES( '" + title + "', '" + isbn + "' , '" + authorID + "' , '" + yearPublished + "', '" + language + "' , '" + pages + "' , '" + genre + "', '" + publisher + "' , '" + edition + "' , '" + hasHardCover + "' , '" + information + "', '" + clientID + "' , '" + orderID + "'");
 
             String queryLastRowInserted = "SELECT last_insert_rowid() AS id;";
             statement.execute(queryLastRowInserted);
