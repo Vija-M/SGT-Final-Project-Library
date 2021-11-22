@@ -2,6 +2,7 @@ package controllers;
 
 import menu.MainMenu;
 import menu.UsersMenu;
+import objects.Authors;
 import objects.Users;
 
 import java.sql.*;
@@ -9,6 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
+
 //Vija - "jdbc:sqlite:/Users/37126/SQLITE3/Library.db"
 public class UserController {
     final private static Scanner scanner = new Scanner(System.in);
@@ -138,7 +140,7 @@ public class UserController {
                 statement.execute("UPDATE Users SET phone = \"" + info + "\" WHERE userID = " + id + ";");
 
             } else if (column == 5) {
-              statement.execute("UPDATE Users SET birthDate = \"" + info + "\" WHERE userID = " + id + ";");
+                statement.execute("UPDATE Users SET birthDate = \"" + info + "\" WHERE userID = " + id + ";");
 
             } else if (column == 6) {
                 statement.execute("UPDATE Users SET address = \"" + info + "\" WHERE userID = " + id + ";");
@@ -167,23 +169,26 @@ public class UserController {
         }
     }
 
-    public static Users findUserByEmail() {
+
+    public static Users findUserById() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter user's e-mail: ");
-        String name = scanner.nextLine().trim();
+        System.out.println("Enter the ID of the user: ");
+        int id = scanner.nextInt();
         System.out.println("");
 
         try {
             Statement statement = MainMenu.helper.getStatment();
 
             statement.execute(
-                    "SELECT * FROM users WHERE email = \"" + name + "\";");
-
+                    "SELECT * FROM users WHERE userID =" + id);
 
             int userID;
             String userFirstName, userLastName, email, phone, address, city, country, postalCode, userHistory;
             Date birthDate;
+
+
             Users user = new Users();
+
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
             ResultSet rs = statement.getResultSet();
             while (rs.next()) {
@@ -203,12 +208,57 @@ public class UserController {
                         "\n" + "Phone: " + phone + "\n" + "Date of birth: " + birthDate + "\n" + "Address: " + address + "\n" + "City: " + city + "\n" +
                         "Country: " + country + "\n" + "PostalCode: " + postalCode + "\n" + "User history: " + userHistory);
             }
-
             return user;
 
         } catch (SQLException | ParseException throwables) {
             throwables.printStackTrace();
-            System.out.println("Didn't find an author. Try again.");
+            System.out.println("Didn't find a user. Try again.");
+            return null;
+        }
+    }
+
+    public static Users findUserByEmail() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter user's e-mail: ");
+        String name = scanner.nextLine().trim();
+        System.out.println("");
+
+        try {
+            Statement statement = MainMenu.helper.getStatment();
+
+            statement.execute(
+                    "SELECT * FROM users WHERE email like '%" + name + "%' ;");
+
+            int userID;
+            String userFirstName, userLastName, email, phone, address, city, country, postalCode, userHistory;
+            Date birthDate;
+
+            Users user = new Users();
+
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            ResultSet rs = statement.getResultSet();
+            while (rs.next()) {
+                userID = rs.getInt("userID");
+                userFirstName = rs.getString("userFirstName");
+                userLastName = rs.getString("userLastName");
+                email = rs.getString("email");
+                phone = rs.getString("phone");
+                birthDate = formatter.parse(rs.getString("birthDate"));
+                address = rs.getString("address");
+                city = rs.getString("city");
+                country = rs.getString("country");
+                postalCode = rs.getString("postalCode");
+                userHistory = rs.getString("userHistory");
+
+                System.out.println("User ID: " + userID + "\n" + "Name: " + userFirstName + "\n" + "Family name: " + userLastName + "\n" + "E-mail: " + email +
+                        "\n" + "Phone: " + phone + "\n" + "Date of birth: " + birthDate + "\n" + "Address: " + address + "\n" + "City: " + city + "\n" +
+                        "Country: " + country + "\n" + "PostalCode: " + postalCode + "\n" + "User history: " + userHistory + "\n" + "*****");
+            }
+            return user;
+
+        } catch (SQLException | ParseException throwables) {
+            throwables.printStackTrace();
+            System.out.println("Didn't find a user. Try again.");
             return null;
         }
     }

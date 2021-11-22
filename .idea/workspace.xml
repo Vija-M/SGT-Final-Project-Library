@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="95c5f003-287b-45e4-b251-77eec8cccf51" name="Changes" comment="Grammar fixed in AuthorController">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/menu/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/menu/MainMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/Library.db" beforeDir="false" afterPath="$PROJECT_DIR$/sql/Library.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/menu/LibraryCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/LibraryCollection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/menu/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/DBHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/DBHelper.java" afterDir="false" />
-    </list>
+    <list default="true" id="95c5f003-287b-45e4-b251-77eec8cccf51" name="Changes" comment="returnBook and MainMenu fixes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -391,7 +384,21 @@
       <option name="project" value="LOCAL" />
       <updated>1637500888254</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="returnBook and MainMenu fixes">
+      <created>1637611394738</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1637611394739</updated>
+    </task>
+    <task id="LOCAL-00041" summary="returnBook and MainMenu fixes">
+      <created>1637611707705</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1637611707705</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -418,6 +425,7 @@
     <MESSAGE value="Books class, Books controller, fixes for all controllers" />
     <MESSAGE value="Books class added, Books controller added, fixes for all controllers, some minor overall fixes" />
     <MESSAGE value="Grammar fixed in AuthorController" />
-    <option name="LAST_COMMIT_MESSAGE" value="Grammar fixed in AuthorController" />
+    <MESSAGE value="returnBook and MainMenu fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="returnBook and MainMenu fixes" />
   </component>
 </project>
