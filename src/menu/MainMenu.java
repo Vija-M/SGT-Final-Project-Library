@@ -49,6 +49,7 @@ public class MainMenu {
                     break;
 
                 case 2:
+                    scan.nextLine();
                     MainMenu.returnBook();
                     break;
 
@@ -88,12 +89,13 @@ public class MainMenu {
             System.out.println("Welcome " + clientName + " " + clientSurname + "\n"
                     + "Your client history is: " + clientHistory + "\n");
 
-            System.exit(0);
+            statement.close();
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
             System.out.println("The account has not been found.");
         }
+        MainMenu.clientMenu();
     }
 
     private static void searchBook() {
@@ -105,7 +107,6 @@ public class MainMenu {
             PreparedStatement bookInformation = helper.connection.prepareStatement("SELECT  Books.title, Books.authorID, Books.yearPublished, Books.publisher, Books.edition, Books.orderID, Authors.authorName FROM Books INNER JOIN Authors ON Books.authorID = Authors.authorID WHERE Books.title = " + "'" + title + "';");
             ResultSet rs = bookInformation.executeQuery();
 
-
             if (rs.getInt("orderID") != 1) {
                 System.out.println("Your book '" + rs.getString("title") + "', the " + rs.getString("edition") + " edition, written by " + rs.getString("authorName") + "\n"
                         + "(published in: " + rs.getInt("yearPublished") + " by " + rs.getString("publisher") + ") " + "\n"
@@ -115,45 +116,44 @@ public class MainMenu {
                         + "(published in: " + rs.getInt("yearPublished") + " by " + rs.getString("publisher") + ") " + "\n"
                         + " is unavailable.");
             }
-            System.exit(0);  // EV - do we need  it here? Mby we could add an option to return to menu or smth?
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
             System.out.println("The book with this title has not been found.");
-
-            System.exit(0);    // EV - do we need  it here? Mby we could add an option to return to menu or smth?
         }
+        MainMenu.clientMenu();
     }
 
     private static void returnBook() {
+        int orderID = 1;
         System.out.println("Please, enter the title of the book you are returning.");
         String title = scan.nextLine();
-        int orderID = 1;
+
 
         try {
+            // Statement statement = helper.getStatment();
+            // PreparedStatement bookInformation = helper.connection.prepareStatement("SELECT  Books.title, Books.authorID, Books.yearPublished, Books.publisher, Books.edition, Books.orderID, Authors.authorName FROM Books INNER JOIN Authors ON Books.authorID = Authors.authorID WHERE Books.title = " + "'" + title + "';");
+            // ResultSet rs = bookInformation.executeQuery();
+
             Statement statement = helper.getStatment();
 
-            statement.execute("SELECT Books.title, Books.authorID, Books.yearPublished, Books.publisher, Books.edition, Books.orderID, Authors.authorName FROM Books INNER JOIN Authors ON Books.authorID = Authors.authorID WHERE Books.title = " + "'" + title + "';");
+            statement.execute("UPDATE Books SET orderID = " + orderID + " WHERE Books.title = '" + title + "' ;");
             ResultSet rs = statement.getResultSet();
 
-            statement.execute("UPDATE Books.orderID = \"" + orderID + "\" WHERE Books.title = " + "'" + title + "';");
-
-                System.out.println("You've just returned a book by " + rs.getString("authorName") + " titled " + rs.getString("title") + "\n"
+                System.out.println("You've successfully returned the book. \n"
                         + "Thank you for using the library." + "\n");
-
-            System.exit(0);
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
             System.out.println("Your attempt to return the book has failed.");
 
-            System.exit(0);
         }
+        MainMenu.clientMenu();
     }
 
 
     private static void saveAndQuit() {
-        System.out.println("Enter file name: ");
+        System.exit(0);
 
     }
 
