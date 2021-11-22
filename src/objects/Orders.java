@@ -10,6 +10,9 @@ private Date issueDate;
 private Date returnDate;
 private String orderInfo;
 
+    public Orders() {
+    }
+
     public Orders(int orderID, int bookID, Date issueDate, Date returnDate, String orderInfo) {
         this.orderID = orderID;
         BookID = bookID;
