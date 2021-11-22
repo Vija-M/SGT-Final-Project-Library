@@ -2,6 +2,7 @@ package menu;
 
 import controllers.AuthorController;
 import util.DBHelper;
+
 import java.sql.*;
 import java.util.Scanner;
 
@@ -140,8 +141,8 @@ public class MainMenu {
             statement.execute("UPDATE Books SET orderID = " + orderID + " WHERE Books.title = '" + title + "' ;");
             ResultSet rs = statement.getResultSet();
 
-                System.out.println("You've successfully returned the book. \n"
-                        + "Thank you for using the library." + "\n");
+            System.out.println("You've successfully returned the book. \n"
+                    + "Thank you for using the library." + "\n");
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
