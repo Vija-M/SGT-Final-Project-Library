@@ -3,8 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="95c5f003-287b-45e4-b251-77eec8cccf51" name="Changes" comment="Grammar fixed in AuthorController">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/menu/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/menu/PrintMenu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/controllers/AuthorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/controllers/AuthorController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/controllers/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/menu/AuthorsMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/menu/AuthorsMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/objects/Books.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/objects/Books.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/BooksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/BooksController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/menu/BooksMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/BooksMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/objects/Books.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/objects/Books.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,11 +90,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainMenu" />
+        <item itemvalue="Application.Users" />
         <item itemvalue="Application.Users" />
         <item itemvalue="Application.MainMenu" />
         <item itemvalue="Application.Users" />
-        <item itemvalue="Application.MainMenu" />
-        <item itemvalue="Application.MainMenu" />
       </list>
     </recent_temporary>
   </component>
