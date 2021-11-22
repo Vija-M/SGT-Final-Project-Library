@@ -180,7 +180,7 @@ public class AuthorController {
             Statement statement = MainMenu.helper.getStatment();
 
             statement.execute(
-                    "SELECT * FROM authors WHERE authorName = \"" + name + "\";");
+                    "SELECT * FROM authors WHERE authorName like '%" + name + "%' ;");
 
             int authorID;
             String authorName, authorInfo;
@@ -196,7 +196,7 @@ public class AuthorController {
                 dateOfDeath = formatter.parse(rs.getString("dateOfDeath"));
                 authorInfo = rs.getString("authorInfo");
 
-                System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + "Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo);
+                System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + "Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo + "\n" + "***********");
             }
             return author;
 
