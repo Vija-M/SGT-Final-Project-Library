@@ -17,6 +17,7 @@ public class DBHelper {
                     "jdbc:sqlite:/Users/Everita/IdeaProjects/SGT-Final-Project-Library/sql/library.db");
                     // Vija - "jdbc:sqlite:/Users/37126/IdeaProjects/SGT-Final-Project-Library/sql/Library.db");
                            // Ance - "jdbc:sqlite:F:/javaProjects/SGT-Final-Project-Library/sql/Library.db"
+
             statement = connection.createStatement();
         } catch (
                 SQLException exception) {

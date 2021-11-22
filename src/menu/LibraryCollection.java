@@ -1,38 +1,24 @@
 package menu;
 
-
-		import objects.Books;
-
-
-		import java.util.ArrayList;
-		import java.util.List;
+        import java.sql.ResultSet;
+        import java.sql.SQLException;
+        import java.sql.Statement;
 
 
     public class LibraryCollection {
-        private List<Books> libraryCollection;
+        public static void main(String[] args)
+        {
+            try {
+                Statement statement = MainMenu.helper.getStatment();
+                statement.execute("SELECT Books.id, Books.title, Books.authorID, Books.yearPublished, Books.publisher, Books.edition, Books.orderID, Authors.authorName FROM Books INNER JOIN Authors;");
+                ResultSet rs = statement.getResultSet();
 
-
-        public LibraryCollection() {
-            libraryCollection = new ArrayList<Books>();
-        }
-
-
-        public void addBook(Books book) {
-            libraryCollection.add(book);  // a book added to a list
-        }
-
-
-        @Override
-        public String toString() {
-            String bookInfo = "\n";
-
-
-            for (int i = 0; i < libraryCollection.size(); i++) {
-                {
-                    Books book = libraryCollection.get(i);
-                    bookInfo = bookInfo + book.toString();
+                while (rs.next()) {
+                    System.out.println(rs.getInt("id") + ". " + rs.getString("authorName") + " (" + rs.getInt("yearPublished") + ") " + rs.getString("title") + ", the " + rs.getString("edition") + " edition, by " + rs.getString("publisher") + "\n");
                 }
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
             }
-            return bookInfo;
         }
     }
