@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95c5f003-287b-45e4-b251-77eec8cccf51" name="Changes" comment="Corrected clientID to UserID">
-      <change beforePath="$PROJECT_DIR$/src/controllers/BooksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/BooksController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/Library.db" beforeDir="false" afterPath="$PROJECT_DIR$/sql/Library.db" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,11 +35,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="ToolWindowCommit.ShowToolbar" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../coding_examples" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/sql/Library.db" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/sql/Library.db" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
