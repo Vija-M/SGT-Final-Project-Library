@@ -26,10 +26,10 @@ public class UsersMenu {
                 UserController.deleteUser();
                 break;
             case 3:
-               UserController.updateUser();
+                UserController.updateUser();
                 break;
             case 4:
-                //UserController.;
+                UserController.findUserById();
                 break;
             case 5:
                 UserController.findUserByEmail();

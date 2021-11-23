@@ -24,7 +24,7 @@ public class BooksController {
         int yearPublished = scanner.nextInt();
         scanner.nextLine();
 
-        System.out.print("Enter the language if book is not written in English: ");
+        System.out.print("Enter the language book is written in: ");
         String language = scanner.nextLine();
 
         System.out.print("Enter the number of pages: ");
@@ -40,8 +40,8 @@ public class BooksController {
         System.out.print("Enter the edition of the book (optional): ");
         String edition = scanner.nextLine();
 
-        System.out.print("Is book a hardcover (true / false): "); //TODO - return to this and check how this connects to constructor / database
-        boolean hasHardCover = scanner.nextBoolean();
+        System.out.print("Enter 0 if book is paperback, 1 if book is hardcover): ");
+        int hasHardCover = scanner.nextInt();
         scanner.nextLine();
 
         System.out.print("Information about the book: ");
@@ -57,7 +57,7 @@ public class BooksController {
             Statement statement = MainMenu.helper.getStatment();
             statement.execute(
                     "INSERT INTO Books (title, isbn, authorID, yearPublished, language, pages, genre, publisher, edition,  hasHardCover, information, userID, orderID) " +
-                            "VALUES( '" + title + "', '" + isbn + "' , '" + authorID + "' , '" + yearPublished + "', '" + language + "' , '" + pages + "' , '" + genre + "', '" + publisher + "' , '" + edition + "' , '" + hasHardCover + "' , '" + information + "', '" + userID + "' , '" + orderID + "'");
+                            "VALUES( '" + title + "', '" + isbn + "' , '" + authorID + "' , '" + yearPublished + "', '" + language + "' , '" + pages + "' , '" + genre + "', '" + publisher + "' , '" + edition + "' , '" + hasHardCover + "' , '" + information + "', '" + userID + "' , '" + orderID + "');");
 
             String queryLastRowInserted = "SELECT last_insert_rowid() AS id;";
             statement.execute(queryLastRowInserted);
@@ -117,7 +117,7 @@ public class BooksController {
                 String genre = rs.getString("genre");
                 String publisher = rs.getString("publisher");
                 String edition = rs.getString("edition");
-                boolean hasHardCover = rs.getBoolean("hasHardCover");
+                int hasHardCover = rs.getInt("hasHardCover");
                 String information = rs.getString("information");
                 int userID = rs.getInt("userID");
                 int orderID = rs.getInt("orderID");
@@ -158,7 +158,7 @@ public class BooksController {
                 String genre = rs.getString("genre");
                 String publisher = rs.getString("publisher");
                 String edition = rs.getString("edition");
-                boolean hasHardCover = rs.getBoolean("hasHardCover");
+                int hasHardCover = rs.getInt("hasHardCover");
                 String information = rs.getString("information");
                 int userID = rs.getInt("userID");
                 int orderID = rs.getInt("orderID");
@@ -196,7 +196,7 @@ public class BooksController {
             String genre = rs.getString("genre");
             String publisher = rs.getString("publisher");
             String edition = rs.getString("edition");
-            boolean hasHardCover = rs.getBoolean("hasHardCover");
+            int hasHardCover = rs.getInt("hasHardCover");
             String information = rs.getString("information");
             int userID = rs.getInt("userID");
             int orderID = rs.getInt("orderID");
@@ -246,7 +246,6 @@ public class BooksController {
 
             } else if (column == 6) {
                 statement.execute("UPDATE Books SET pages = \"" + info + "\" WHERE pages = " + id + ";");
-
             } else if (column == 7) {
                 statement.execute("UPDATE Books SET genre = \"" + info + "\" WHERE genre = " + id + ";");
             } else if (column == 8) {
@@ -260,7 +259,6 @@ public class BooksController {
 
             } else if (column == 11) {
                 statement.execute("UPDATE Books SET information = \"" + info + "\" WHERE information = " + id + ";");
-
             } else if (column == 12) {
                 statement.execute("UPDATE Books SET userID = \"" + info + "\" WHERE userID = " + id + ";");
 
@@ -281,7 +279,7 @@ public class BooksController {
         }
     }
 
-    public static String printAllBooks(){
+    public static String printAllBooks() {
         try {
             Statement statement = MainMenu.helper.getStatment();
             statement.execute("SELECT * FROM Books;");
@@ -298,14 +296,15 @@ public class BooksController {
                 String genre = rs.getString("genre");
                 String publisher = rs.getString("publisher");
                 String edition = rs.getString("edition");
-                boolean hasHardCover = rs.getBoolean("hasHardCover");
+                int hasHardCover = rs.getInt("hasHardCover");
                 String information = rs.getString("information");
                 int userID = rs.getInt("userID");
                 int orderID = rs.getInt("orderID");
 
                 System.out.println("Book ID: " + id + "\n" + "Title: " + title + "\n" + "ISBN: " + isbn + "\n" + "AuthorID:" + authorID +
-                        "\n" + "Year published: " + yearPublished + "Language: " + language + "\n" + "Number of pages: " + pages +
-                        "\n" + "Genre: " + genre + "\n" + "Publisher: " + publisher + "Edition: " + edition + "\n" + "Hardcover: " + hasHardCover +
+                        "\n" + "Year published: " + yearPublished +
+                        "\n" + "Language: " + language + "\n" + "Number of pages: " + pages +
+                        "\n" + "Genre: " + genre + "\n" + "Publisher: " + publisher + "\n" + "Edition: " + edition + "\n" + "Hardcover: " + hasHardCover +
                         "\n" + "Information: " + information + "\n" + "UserID: " + userID + "\n" + "OrderID:" + orderID + "\n*************************\n");
             }
 
