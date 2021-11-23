@@ -122,9 +122,10 @@ public class BooksController {
                 int userID = rs.getInt("userID");
                 int orderID = rs.getInt("orderID");
                 System.out.println("Book ID: " + id + "\n" + "Title: " + title + "\n" + "ISBN: " + isbn + "\n" + "AuthorID:" + authorID +
-                        "\n" + "Year published: " + yearPublished + "Language: " + language + "\n" + "Number of pages: " + pages +
-                        "\n" + "Genre: " + genre + "\n" + "Publisher: " + publisher + "Edition: " + edition + "\n" + "Hardcover: " + hasHardCover +
-                        "\n" + "Information: " + information + "\n" + "UserID: " + userID + "\n" + "OrderID:" + orderID);
+                        "\n" + "Year published: " + yearPublished +
+                        "\n" + "Language: " + language + "\n" + "Number of pages: " + pages +
+                        "\n" + "Genre: " + genre + "\n" + "Publisher: " + publisher + "\n" + "Edition: " + edition + "\n" + "Hardcover: " + hasHardCover +
+                        "\n" + "Information: " + information + "\n" + "UserID: " + userID + "\n" + "OrderID:" + orderID + "\n*************************\n");
             }
             return book;
 
@@ -163,9 +164,10 @@ public class BooksController {
                 int userID = rs.getInt("userID");
                 int orderID = rs.getInt("orderID");
                 System.out.println("Book ID: " + id + "\n" + "Title: " + title + "\n" + "ISBN: " + isbn + "\n" + "AuthorID:" + authorID +
-                        "\n" + "Year published: " + yearPublished + "Language: " + language + "\n" + "Number of pages: " + pages +
-                        "\n" + "Genre: " + genre + "\n" + "Publisher: " + publisher + "Edition: " + edition + "\n" + "Hardcover: " + hasHardCover +
-                        "\n" + "Information: " + information + "\n" + "UserID: " + userID + "\n" + "OrderID:" + orderID);
+                        "\n" + "Year published: " + yearPublished +
+                        "\n" + "Language: " + language + "\n" + "Number of pages: " + pages +
+                        "\n" + "Genre: " + genre + "\n" + "Publisher: " + publisher + "\n" + "Edition: " + edition + "\n" + "Hardcover: " + hasHardCover +
+                        "\n" + "Information: " + information + "\n" + "UserID: " + userID + "\n" + "OrderID:" + orderID + "\n*************************\n");
             }
             return book;
 
@@ -202,9 +204,10 @@ public class BooksController {
             int orderID = rs.getInt("orderID");
 
             System.out.println("Book ID: " + id + "\n" + "Title: " + title + "\n" + "ISBN: " + isbn + "\n" + "AuthorID:" + authorID +
-                    "\n" + "Year published: " + yearPublished + "Language: " + language + "\n" + "Number of pages: " + pages +
-                    "\n" + "Genre: " + genre + "\n" + "Publisher: " + publisher + "Edition: " + edition + "\n" + "Hardcover: " + hasHardCover +
-                    "\n" + "Information: " + information + "\n" + "UserID: " + userID + "\n" + "OrderID:" + orderID);
+                    "\n" + "Year published: " + yearPublished +
+                    "\n" + "Language: " + language + "\n" + "Number of pages: " + pages +
+                    "\n" + "Genre: " + genre + "\n" + "Publisher: " + publisher + "\n" + "Edition: " + edition + "\n" + "Hardcover: " + hasHardCover +
+                    "\n" + "Information: " + information + "\n" + "UserID: " + userID + "\n" + "OrderID:" + orderID + "\n*************************\n");
 
             System.out.println("What information do you want to change?");
             System.out.println("Please, print:  " +
@@ -230,7 +233,7 @@ public class BooksController {
 
 
             if (column == 1) {
-                statement.execute("UPDATE Books SET title = \"" + info + "\" WHERE title = " + id + ";");
+                statement.execute("UPDATE Books SET title = \"" + info + "\" WHERE UPDATE = " + id + ";");
 
             } else if (column == 2) {
                 statement.execute("UPDATE Books SET isbn = \"" + info + "\" WHERE isbn = " + id + ";");
@@ -239,7 +242,7 @@ public class BooksController {
                 statement.execute("UPDATE Books SET authorID = \"" + info + "\" WHERE authorID = " + id + ";");
 
             } else if (column == 4) {
-                statement.execute("UPDATE Books SET yearPublished = \"" + info + "\" WHERE yearPublished = " + id + ";");
+                statement.execute("UPDATE Books SET yearPublished = \"" + info + "\" WHERE id = " + id + ";");
 
             } else if (column == 5) {
                 statement.execute("UPDATE Books SET language = \"" + info + "\" WHERE language = " + id + ";");
