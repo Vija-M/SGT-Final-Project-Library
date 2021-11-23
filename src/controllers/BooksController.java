@@ -47,8 +47,8 @@ public class BooksController {
         System.out.print("Information about the book: ");
         String information = scanner.nextLine();
 
-        System.out.print("Enter the clientID (optional) : ");
-        int clientID = scanner.nextInt();
+        System.out.print("Enter the userID (optional) : ");
+        int userID = scanner.nextInt();
 
         System.out.print("Enter the orderID (optional) : ");
         int orderID = scanner.nextInt();
@@ -56,8 +56,8 @@ public class BooksController {
         try {
             Statement statement = MainMenu.helper.getStatment();
             statement.execute(
-                    "INSERT INTO Books (title, isbn, authorID, yearPublished, language, pages, genre, publisher, edition,  hasHardCover, information, clientID, orderID) " +
-                            "VALUES( '" + title + "', '" + isbn + "' , '" + authorID + "' , '" + yearPublished + "', '" + language + "' , '" + pages + "' , '" + genre + "', '" + publisher + "' , '" + edition + "' , '" + hasHardCover + "' , '" + information + "', '" + clientID + "' , '" + orderID + "'");
+                    "INSERT INTO Books (title, isbn, authorID, yearPublished, language, pages, genre, publisher, edition,  hasHardCover, information, userID, orderID) " +
+                            "VALUES( '" + title + "', '" + isbn + "' , '" + authorID + "' , '" + yearPublished + "', '" + language + "' , '" + pages + "' , '" + genre + "', '" + publisher + "' , '" + edition + "' , '" + hasHardCover + "' , '" + information + "', '" + userID + "' , '" + orderID + "'");
 
             String queryLastRowInserted = "SELECT last_insert_rowid() AS id;";
             statement.execute(queryLastRowInserted);
@@ -119,12 +119,12 @@ public class BooksController {
                 String edition = rs.getString("edition");
                 boolean hasHardCover = rs.getBoolean("hasHardCover");
                 String information = rs.getString("information");
-                int clientID = rs.getInt("clientID");
+                int userID = rs.getInt("userID");
                 int orderID = rs.getInt("orderID");
                 System.out.println("Book ID: " + id + "\n" + "Title: " + title + "\n" + "ISBN: " + isbn + "\n" + "AuthorID:" + authorID +
                         "\n" + "Year published: " + yearPublished + "Language: " + language + "\n" + "Number of pages: " + pages +
                         "\n" + "Genre: " + genre + "\n" + "Publisher: " + publisher + "Edition: " + edition + "\n" + "Hardcover: " + hasHardCover +
-                        "\n" + "Information: " + information + "\n" + "ClientID: " + clientID + "\n" + "OrderID:" + orderID);
+                        "\n" + "Information: " + information + "\n" + "UserID: " + userID + "\n" + "OrderID:" + orderID);
             }
             return book;
 
@@ -160,12 +160,12 @@ public class BooksController {
                 String edition = rs.getString("edition");
                 boolean hasHardCover = rs.getBoolean("hasHardCover");
                 String information = rs.getString("information");
-                int clientID = rs.getInt("clientID");
+                int userID = rs.getInt("userID");
                 int orderID = rs.getInt("orderID");
                 System.out.println("Book ID: " + id + "\n" + "Title: " + title + "\n" + "ISBN: " + isbn + "\n" + "AuthorID:" + authorID +
                         "\n" + "Year published: " + yearPublished + "Language: " + language + "\n" + "Number of pages: " + pages +
                         "\n" + "Genre: " + genre + "\n" + "Publisher: " + publisher + "Edition: " + edition + "\n" + "Hardcover: " + hasHardCover +
-                        "\n" + "Information: " + information + "\n" + "ClientID: " + clientID + "\n" + "OrderID:" + orderID);
+                        "\n" + "Information: " + information + "\n" + "UserID: " + userID + "\n" + "OrderID:" + orderID);
             }
             return book;
 
@@ -198,13 +198,13 @@ public class BooksController {
             String edition = rs.getString("edition");
             boolean hasHardCover = rs.getBoolean("hasHardCover");
             String information = rs.getString("information");
-            int clientID = rs.getInt("clientID");
+            int userID = rs.getInt("userID");
             int orderID = rs.getInt("orderID");
 
             System.out.println("Book ID: " + id + "\n" + "Title: " + title + "\n" + "ISBN: " + isbn + "\n" + "AuthorID:" + authorID +
                     "\n" + "Year published: " + yearPublished + "Language: " + language + "\n" + "Number of pages: " + pages +
                     "\n" + "Genre: " + genre + "\n" + "Publisher: " + publisher + "Edition: " + edition + "\n" + "Hardcover: " + hasHardCover +
-                    "\n" + "Information: " + information + "\n" + "ClientID: " + clientID + "\n" + "OrderID:" + orderID);
+                    "\n" + "Information: " + information + "\n" + "UserID: " + userID + "\n" + "OrderID:" + orderID);
 
             System.out.println("What information do you want to change?");
             System.out.println("Please, print:  " +
@@ -219,7 +219,7 @@ public class BooksController {
                     "\n ---> 9 for Edition;" +
                     "\n ---> 10 for Hardcover; " +
                     "\n ---> 11 for Information; " +
-                    "\n ---> 12 for ClientID; " +
+                    "\n ---> 12 for UserID; " +
                     "\n ---> 13 for OrderID; " +
                     "\n ---> 0 return to Books menu");
 
@@ -262,7 +262,7 @@ public class BooksController {
                 statement.execute("UPDATE Books SET information = \"" + info + "\" WHERE information = " + id + ";");
 
             } else if (column == 12) {
-                statement.execute("UPDATE Books SET clientID = \"" + info + "\" WHERE clientID = " + id + ";");
+                statement.execute("UPDATE Books SET userID = \"" + info + "\" WHERE userID = " + id + ";");
 
             } else if (column == 13) {
                 statement.execute("UPDATE Books SET orderID = \"" + info + "\" WHERE orderID = " + id + ";");
@@ -300,13 +300,13 @@ public class BooksController {
                 String edition = rs.getString("edition");
                 boolean hasHardCover = rs.getBoolean("hasHardCover");
                 String information = rs.getString("information");
-                int clientID = rs.getInt("clientID");
+                int userID = rs.getInt("userID");
                 int orderID = rs.getInt("orderID");
 
                 System.out.println("Book ID: " + id + "\n" + "Title: " + title + "\n" + "ISBN: " + isbn + "\n" + "AuthorID:" + authorID +
                         "\n" + "Year published: " + yearPublished + "Language: " + language + "\n" + "Number of pages: " + pages +
                         "\n" + "Genre: " + genre + "\n" + "Publisher: " + publisher + "Edition: " + edition + "\n" + "Hardcover: " + hasHardCover +
-                        "\n" + "Information: " + information + "\n" + "ClientID: " + clientID + "\n" + "OrderID:" + orderID + "\n*************************\n");
+                        "\n" + "Information: " + information + "\n" + "UserID: " + userID + "\n" + "OrderID:" + orderID + "\n*************************\n");
             }
 
         } catch (SQLException throwables) {
