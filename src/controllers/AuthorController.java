@@ -18,12 +18,15 @@ public class AuthorController {
     public static int addNewAuthor() {
         System.out.print("Enter the name of the author: ");
         String authorName = scanner.nextLine();
+        scanner.nextLine();
 
         System.out.print("Enter author's date of birth (yyyy-MM-dd): ");
         String dateOfBirth = scanner.nextLine();
+        scanner.nextLine();
 
         System.out.print("Enter author's date of death (yyyy-MM-dd, optional): ");
         String dateOfDeath = scanner.nextLine();
+        scanner.nextLine();
 
         System.out.print("Enter any additional information about author (optional): ");
         String authorInfo = scanner.nextLine();
