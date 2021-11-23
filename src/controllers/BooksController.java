@@ -143,7 +143,7 @@ public class BooksController {
             Statement statement = MainMenu.helper.getStatment();
 
             statement.execute(
-                    "SELECT * FROM Books WHERE title = \"" + booksTitle + "\";");
+                    "SELECT * FROM Books WHERE title LIKE '%" + booksTitle + "%'");
 
             Books book = new Books();
             ResultSet rs = statement.getResultSet();
