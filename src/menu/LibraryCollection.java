@@ -91,6 +91,27 @@ public class LibraryCollection {
         MainMenu.clientMenu();
     }
 
+    public static void borrowBook() {
+        int orderID = 0;
+        System.out.println("Please, enter the title of a book you would like to borrow.");
+        String title = scan.nextLine();
+
+
+        try {
+            Statement statement = helper.getStatment();
+            statement.execute("UPDATE Books SET orderID = " + orderID + " WHERE Books.title = '" + title + "' ;");
+            ResultSet rs = statement.getResultSet();
+
+            System.out.println("You've successfully returned the book. \n"
+                    + "Thank you for using the library." + "\n");
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+            System.out.println("Your attempt to return the book has failed.");
+        }
+        MainMenu.clientMenu();
+    }
+
     public static void returnBook() {
         int orderID = 1;
         System.out.println("Please, enter the title of the book you are returning.");
