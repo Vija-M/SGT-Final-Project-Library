@@ -154,7 +154,7 @@ public class OrdersController {
                 statement.execute("UPDATE Orders SET returnDate = \"" + info + "\" WHERE orderID = " + id + ";");
 
             } else if (column == 6) {
-                statement.execute("UPDATE Orders SET orderInfo = \"" + info + "\" WHERE orderID = " + id + ";");
+                statement.execute("UPDATE Orders SET information = \"" + info + "\" WHERE orderID = " + id + ";");
 
             } else if (column == 0) {
                 OrdersMenu.execute();
@@ -175,7 +175,7 @@ public class OrdersController {
     public static String printAllOrders() {
         try {
             Statement statement = MainMenu.helper.getStatment();
-            statement.execute("SELECT * FROM Books;");
+            statement.execute("SELECT * FROM Orders;");
             ResultSet rs = statement.getResultSet();
 
             while (rs.next()) {
@@ -187,7 +187,7 @@ public class OrdersController {
                 String orderInfo = rs.getString("information");
 
                 System.out.println("Order ID: " + orderID + "\n" + "Book ID: " + bookID + "\n" + "User ID: " + userID + "\n" +
-                        "Date order was issued : " + issueDate + "\n" + "Return date: " + returnDate + "\n" + "Additional information about order: " + orderInfo);
+                        "Date order was issued : " + issueDate + "\n" + "Return date: " + returnDate + "\n" + "Additional information about order: " + orderInfo + "\n***************************************");
             }
 
         } catch (SQLException | ParseException throwables) {
