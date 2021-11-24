@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class LibraryCollection {
 
     static Scanner scan = new Scanner(System.in);
-    public static DBHelper helper;
+    //public static DBHelper helper;
 
     public static void loadClientInfo() {
 
@@ -20,20 +20,21 @@ public class LibraryCollection {
         int userID = scan.nextInt();
 
         try {
-            Statement statement = helper.getStatment();
+            Statement statement = MainMenu.helper.getStatment();
             statement.execute("SELECT * FROM Users WHERE userID = " + userID + ";");
+            ResultSet rs = statement.getResultSet();
 
-            PreparedStatement clientInfo = helper.connection.prepareStatement("SELECT userFirstName, userLastName, userHistory FROM Users WHERE userID = " + userID + ";");
-            ResultSet rs = clientInfo.executeQuery();
+            // PreparedStatement clientInfo = helper.connection.prepareStatement("SELECT userFirstName, userLastName, userHistory FROM Users WHERE Users.userID = " + userID + ";");
+            // ResultSet rs = clientInfo.executeQuery();
 
-            String clientName = rs.getString(1);
-            String clientSurname = rs.getString(2);
-            String clientHistory = rs.getString(3);
+            String clientName = rs.getString("userFirstName");
+            String clientSurname = rs.getString("userLastName");
+            String clientHistory = rs.getString("userHistory");
 
             System.out.println("Welcome " + clientName + " " + clientSurname + "\n"
                     + "Your client history is: " + clientHistory + "\n");
 
-            statement.close();
+            // statement.close();
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -71,7 +72,7 @@ public class LibraryCollection {
         String title = scan.nextLine();
 
         try {
-            PreparedStatement bookInformation = helper.connection.prepareStatement("SELECT  Books.title, Books.authorID, Books.yearPublished, Books.publisher, Books.edition, Books.orderID, Authors.authorName FROM Books INNER JOIN Authors ON Books.authorID = Authors.authorID WHERE Books.title = " + "'" + title + "';");
+            PreparedStatement bookInformation = MainMenu.helper.connection.prepareStatement("SELECT  Books.title, Books.authorID, Books.yearPublished, Books.publisher, Books.edition, Books.orderID, Authors.authorName FROM Books INNER JOIN Authors ON Books.authorID = Authors.authorID WHERE Books.title = " + "'" + title + "';");
             ResultSet rs = bookInformation.executeQuery();
 
             if (rs.getInt("orderID") != 1) {
@@ -92,34 +93,33 @@ public class LibraryCollection {
     }
 
     public static void borrowBook() {
-        int orderID = 0;
+        int orderID = 1;
         System.out.println("Please, enter the title of a book you would like to borrow.");
         String title = scan.nextLine();
 
-
         try {
-            Statement statement = helper.getStatment();
-            statement.execute("UPDATE Books SET orderID = " + orderID + " WHERE Books.title = '" + title + "' ;");
+            Statement statement = MainMenu.helper.getStatment();
+            statement.execute("UPDATE Books SET orderID = " + orderID + " WHERE title = '" + title + "';");
             ResultSet rs = statement.getResultSet();
 
-            System.out.println("You've successfully borrowed the book titled '" + rs.getString("title") + "'" + "\n"
+            System.out.println("You've successfully borrowed the book titled '" + title + "'." + "\n"
                     + "Thank you for using the library." + "\n");
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            System.out.println("Your attempt to return the book has failed.");
+            System.out.println("Your attempt to borrow the book has failed.");
         }
         MainMenu.clientMenu();
     }
 
     public static void returnBook() {
-        int orderID = 1;
+        int orderID = 0;
         System.out.println("Please, enter the title of the book you are returning.");
         String title = scan.nextLine();
 
 
         try {
-            Statement statement = helper.getStatment();
+            Statement statement = MainMenu.helper.getStatment();
             statement.execute("UPDATE Books SET orderID = " + orderID + " WHERE Books.title = '" + title + "' ;");
             ResultSet rs = statement.getResultSet();
 
