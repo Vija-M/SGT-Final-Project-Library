@@ -3,12 +3,10 @@ package menu;
 import controllers.AuthorController;
 import util.DBHelper;
 
-import java.sql.*;
 import java.util.Scanner;
 
 public class MainMenu {
-    static String fileName = null;
-    static LibraryCollection collection = new LibraryCollection();
+
     static Scanner scan = new Scanner(System.in);
     static Boolean running = true;
     public static DBHelper helper;
@@ -30,133 +28,51 @@ public class MainMenu {
     static void clientMenu() {
         while (running) { // i.e., while the application is running
             System.out.println("Enter 0 for entering your library account." + "\n"
-                    + "Enter 1 to search for a book." + "\n"
-                    + "Enter 2 to return a book" + "\n"
-                    + "Enter 3 to find an author by name" + "\n"
-                    + "Enter 4 to print a list of all authors" + "\n"
-                    + "Enter 5 to save and quit.");
+                    + "Enter 1 to print library collection." + "\n"
+                    + "Enter 2 to search for a book." + "\n"
+                    + "Enter 3 to borrow a book" + "\n"
+                    + "Enter 4 to return a book" + "\n"
+                    + "Enter 5 to retrieve a short bio for an author." + "\n"
+                    + "Enter 6 to save and quit." + "\n");
 
             int clientResponse = scan.nextInt();
 
             switch (clientResponse) {
                 case 0:
-                    MainMenu.loadClientInfo();
+                    LibraryCollection.loadClientInfo();
                     break;
 
                 case 1:
-                    // System.out.println(collection.toString());
-                    scan.nextLine();
-                    MainMenu.searchBook();
+                    LibraryCollection.libraryCollection();
                     break;
 
                 case 2:
                     scan.nextLine();
-                    MainMenu.returnBook();
+                    LibraryCollection.searchBook();
                     break;
 
                 case 3:
-                    AuthorController.findAuthorByName();
+                    scan.nextLine();
+                    LibraryCollection.borrowBook();
                     break;
 
                 case 4:
-                    AuthorController.printAllAuthors();
+                    scan.nextLine();
+                    LibraryCollection.returnBook();
                     break;
 
                 case 5:
-                    MainMenu.saveAndQuit();
+                    AuthorController.findAuthorByName();
                     break;
 
+                case 6:
+                    MainMenu.saveAndQuit();
+                    break;
             }
         }
         System.exit(0);
     }
 
-    private static void loadClientInfo() {
-
-        System.out.println("Please, enter your client identification number.");
-        int userID = scan.nextInt();
-
-        try {
-            Statement statement = helper.getStatment();
-            statement.execute("SELECT * FROM Users WHERE userID = " + userID + ";");
-
-            PreparedStatement clientInfo = helper.connection.prepareStatement("SELECT userFirstName, userLastName, userHistory FROM Users WHERE userID = " + userID + ";");
-            ResultSet rs = clientInfo.executeQuery();
-
-            String clientName = rs.getString(1);
-            String clientSurname = rs.getString(2);
-            String clientHistory = rs.getString(3);
-
-            System.out.println("Welcome " + clientName + " " + clientSurname + "\n"
-                    + "Your client history is: " + clientHistory + "\n");
-
-            statement.close();
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-            System.out.println("The account has not been found.");
-        }
-        MainMenu.clientMenu();
-    }
-
-    private static void searchBook() {
-
-        System.out.println("Please, enter the title of the book you are looking for.");
-        String title = scan.nextLine();
-
-        try {
-            PreparedStatement bookInformation = helper.connection.prepareStatement("SELECT  Books.title, Books.authorID, Books.yearPublished, Books.publisher, Books.edition, Books.orderID, Authors.authorName FROM Books INNER JOIN Authors ON Books.authorID = Authors.authorID WHERE Books.title = " + "'" + title + "';");
-            ResultSet rs = bookInformation.executeQuery();
-
-            if (rs.getInt("orderID") != 1) {
-                System.out.println("Your book '" + rs.getString("title") + "', the " + rs.getString("edition") + " edition, written by " + rs.getString("authorName") + "\n"
-                        + "(published in: " + rs.getInt("yearPublished") + " by " + rs.getString("publisher") + ") " + "\n"
-                        + "is shelved and available to borrow." + "\n");
-            } else {
-                System.out.println("Your book '" + rs.getString("title") + "', the " + rs.getString("edition") + " edition, written by " + rs.getString("authorName") + "\n"
-                        + "(published in: " + rs.getInt("yearPublished") + " by " + rs.getString("publisher") + ") " + "\n"
-                        + " is unavailable.");
-            }
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-            System.out.println("The book with this title has not been found.");
-        }
-        MainMenu.clientMenu();
-    }
-
-    private static void returnBook() {
-        int orderID = 1;
-        System.out.println("Please, enter the title of the book you are returning.");
-        String title = scan.nextLine();
-
-
-        try {
-            // Statement statement = helper.getStatment();
-            // PreparedStatement bookInformation = helper.connection.prepareStatement("SELECT  Books.title, Books.authorID, Books.yearPublished, Books.publisher, Books.edition, Books.orderID, Authors.authorName FROM Books INNER JOIN Authors ON Books.authorID = Authors.authorID WHERE Books.title = " + "'" + title + "';");
-            // ResultSet rs = bookInformation.executeQuery();
-
-            Statement statement = helper.getStatment();
-
-            statement.execute("UPDATE Books SET orderID = " + orderID + " WHERE Books.title = '" + title + "' ;");
-            ResultSet rs = statement.getResultSet();
-
-            System.out.println("You've successfully returned the book. \n"
-                    + "Thank you for using the library." + "\n");
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-            System.out.println("Your attempt to return the book has failed.");
-
-        }
-        MainMenu.clientMenu();
-    }
-
-
-    private static void saveAndQuit() {
-        System.exit(0);
-
-    }
 
     public static void librarianMenu() {
         System.out.println("Welcome to the internal system of Rustic Library!");
@@ -193,4 +109,7 @@ public class MainMenu {
         System.exit(0);
     }
 
+    private static void saveAndQuit() {
+        System.exit(0);
+    }
 }
