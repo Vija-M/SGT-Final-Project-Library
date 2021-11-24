@@ -285,7 +285,7 @@ public class UserController {
                 String userHistory = rs.getString("userHistory");
                 System.out.println("User ID: " + userID + "\n" + "Name: " + userFirstName + "\n" + "Family name: " + userLastName + "\n" + "E-mail: " + email +
                         "\n" + "Phone: " + phone + "\n" + "Date of birth: " + birthDate + "\n" + "Address: " + address + "\n" + "City: " + city + "\n" +
-                        "Country: " + country + "\n" + "PostalCode: " + postalCode + "\n" + "User history: " + userHistory + ";\n\n*************************\n");
+                        "Country: " + country + "\n" + "PostalCode: " + postalCode + "\n" + "User history: " + userHistory + "\n\n*************************\n");
             }
 
         } catch (SQLException | ParseException throwables) {
