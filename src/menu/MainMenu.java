@@ -30,10 +30,10 @@ public class MainMenu {
             System.out.println("Enter 0 for entering your library account." + "\n"
                     + "Enter 1 to print library collection." + "\n"
                     + "Enter 2 to search for a book." + "\n"
-                    + "Enter 3 to borrow a book" + "\n"
-                    + "Enter 4 to return a book" + "\n"
+                    + "Enter 3 to borrow a book." + "\n"
+                    + "Enter 4 to return a book." + "\n"
                     + "Enter 5 to retrieve a short bio for an author." + "\n"
-                    + "Enter 6 to save and quit." + "\n");
+                    + "Enter 6 to save and quit.");
 
             int clientResponse = scan.nextInt();
 
