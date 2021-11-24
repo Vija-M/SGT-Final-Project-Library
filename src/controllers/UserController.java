@@ -263,6 +263,7 @@ public class UserController {
         }
     }
 
+
     public static String printAllUsers() {
         try {
             Statement statement = MainMenu.helper.getStatment();
