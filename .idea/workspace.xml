@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="95c5f003-287b-45e4-b251-77eec8cccf51" name="Changes" comment="returnBook and MainMenu fixes">
+    <list default="true" id="95c5f003-287b-45e4-b251-77eec8cccf51" name="Changes" comment="Final fixes in the user-friendly client menu.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/menu/LibraryCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/LibraryCollection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/menu/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/DBHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/DBHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -403,7 +401,21 @@
       <option name="project" value="LOCAL" />
       <updated>1637611707705</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Final fixes in the user-friendly client menu.">
+      <created>1637740993794</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1637740993795</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Final fixes in the user-friendly client menu.">
+      <created>1637742963366</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1637742963367</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -431,6 +443,7 @@
     <MESSAGE value="Books class added, Books controller added, fixes for all controllers, some minor overall fixes" />
     <MESSAGE value="Grammar fixed in AuthorController" />
     <MESSAGE value="returnBook and MainMenu fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="returnBook and MainMenu fixes" />
+    <MESSAGE value="Final fixes in the user-friendly client menu." />
+    <option name="LAST_COMMIT_MESSAGE" value="Final fixes in the user-friendly client menu." />
   </component>
 </project>

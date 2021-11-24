@@ -14,29 +14,6 @@ public class LibraryCollection {
     static Scanner scan = new Scanner(System.in);
     public static DBHelper helper;
 
-    public static String libraryCollection() {
-        {
-            try {
-                Statement statement = MainMenu.helper.getStatment();
-                statement.execute("SELECT * FROM Books INNER JOIN Authors ON Books.authorID = Authors.authorID;");
-                ResultSet rs = statement.getResultSet();
-
-                while (rs.next()) {
-                    System.out.println(rs.getInt("id") + ". "
-                            + rs.getString("authorName")
-                            + " (" + rs.getInt("yearPublished") + ".) '"
-                            + rs.getString("title") + ".' "
-                            + rs.getString("publisher") + "." + "\n"
-                            + "[in " + rs.getString("language") + "] " + "\n");
-                }
-
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-            return null;
-        }
-    }
-
     public static void loadClientInfo() {
 
         System.out.println("Please, enter your client identification number.");
@@ -63,6 +40,29 @@ public class LibraryCollection {
             System.out.println("The account has not been found.");
         }
         MainMenu.clientMenu();
+    }
+
+    public static String libraryCollection() {
+        {
+            try {
+                Statement statement = MainMenu.helper.getStatment();
+                statement.execute("SELECT * FROM Books INNER JOIN Authors ON Books.authorID = Authors.authorID;");
+                ResultSet rs = statement.getResultSet();
+
+                while (rs.next()) {
+                    System.out.println(rs.getInt("id") + ". "
+                            + rs.getString("authorName")
+                            + " (" + rs.getInt("yearPublished") + ".) '"
+                            + rs.getString("title") + ".' "
+                            + rs.getString("publisher") + "." + "\n"
+                            + "[in " + rs.getString("language") + "] " + "\n");
+                }
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
+            return null;
+        }
     }
 
     public static void searchBook() {
@@ -102,7 +102,7 @@ public class LibraryCollection {
             statement.execute("UPDATE Books SET orderID = " + orderID + " WHERE Books.title = '" + title + "' ;");
             ResultSet rs = statement.getResultSet();
 
-            System.out.println("You've successfully returned the book. \n"
+            System.out.println("You've successfully borrowed the book titled '" + rs.getString("title") + "'" + "\n"
                     + "Thank you for using the library." + "\n");
 
         } catch (SQLException throwables) {
