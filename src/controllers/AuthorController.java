@@ -11,18 +11,22 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Date;
 
+
 public class AuthorController {
     final private static Scanner scanner = new Scanner(System.in);
 
     public static int addNewAuthor() {
         System.out.print("Enter the name of the author: ");
         String authorName = scanner.nextLine();
+        scanner.nextLine();
 
         System.out.print("Enter author's date of birth (yyyy-MM-dd): ");
         String dateOfBirth = scanner.nextLine();
+        scanner.nextLine();
 
         System.out.print("Enter author's date of death (yyyy-MM-dd, optional): ");
         String dateOfDeath = scanner.nextLine();
+        scanner.nextLine();
 
         System.out.print("Enter any additional information about author (optional): ");
         String authorInfo = scanner.nextLine();
@@ -179,7 +183,7 @@ public class AuthorController {
             Statement statement = MainMenu.helper.getStatment();
 
             statement.execute(
-                    "SELECT * FROM authors WHERE authorName = \"" + name + "\";");
+                    "SELECT * FROM authors WHERE authorName like '%" + name + "%' ;");
 
             int authorID;
             String authorName, authorInfo;
@@ -195,7 +199,7 @@ public class AuthorController {
                 dateOfDeath = formatter.parse(rs.getString("dateOfDeath"));
                 authorInfo = rs.getString("authorInfo");
 
-                System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + "Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo);
+                System.out.println("Author ID: " + authorID + "\n" + "Name: " + authorName + "\n" + "Date of birth: " + dateOfBirth + "\n" + "Date of death:" + dateOfDeath + "\n" + "Information: " + authorInfo + "\n" + "***********");
             }
             return author;
 
