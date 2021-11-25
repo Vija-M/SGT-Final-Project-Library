@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="95c5f003-287b-45e4-b251-77eec8cccf51" name="Changes" comment="Final fixes in the user-friendly client menu.">
+    <list default="true" id="95c5f003-287b-45e4-b251-77eec8cccf51" name="Changes" comment="Grammar fixed in AuthorController">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/menu/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/SGT-Final-Project-Library/menu/MainMenu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sql/Library.db" beforeDir="false" afterPath="$PROJECT_DIR$/sql/Library.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/menu/LibraryCollection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/LibraryCollection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/menu/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/DBHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/DBHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,13 +26,19 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
   <component name="ProjectId" id="20Ol0Hx5VskyWSRufYxSqlYH9J5" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="ToolWindowCommit.ShowToolbar" value="false" />
@@ -418,8 +422,25 @@
       <option name="project" value="LOCAL" />
       <updated>1637744394117</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Grammar fixed in AuthorController">
+      <created>1637765956549</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1637765956549</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Grammar fixed in AuthorController">
+      <created>1637768639170</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1637768639170</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.db" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -434,6 +455,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Creation" />
     <MESSAGE value="PrintMenu and Collection added" />
     <MESSAGE value="Unfinished classes..." />
@@ -444,10 +466,25 @@
     <MESSAGE value="Ance's commit" />
     <MESSAGE value="Books class, Books controller, fixes for all controllers" />
     <MESSAGE value="Books class added, Books controller added, fixes for all controllers, some minor overall fixes" />
-    <MESSAGE value="Grammar fixed in AuthorController" />
     <MESSAGE value="returnBook and MainMenu fixes" />
     <MESSAGE value="Books functions fixed, small overall updates" />
     <MESSAGE value="Final fixes in the user-friendly client menu." />
-    <option name="LAST_COMMIT_MESSAGE" value="Final fixes in the user-friendly client menu." />
+    <MESSAGE value="Grammar fixed in AuthorController" />
+    <option name="LAST_COMMIT_MESSAGE" value="Grammar fixed in AuthorController" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="8" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SGT_Final_Project_Library$MainMenu.ic" NAME="MainMenu Coverage Results" MODIFIED="1637765327132" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>menu.*</FILTER>
+    </SUITE>
   </component>
 </project>
